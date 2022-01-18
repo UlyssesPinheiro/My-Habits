@@ -1,0 +1,16 @@
+
+pencil
+<a href="https://www.flaticon.com/free-icons/edit" title="edit icons">Edit icons created by Pixel perfect - Flaticon</a>
+archive box
+<a href="https://www.flaticon.com/free-icons/box" title="box icons">Box icons created by Freepik - Flaticon</a>
+trash can
+<a href="https://www.flaticon.com/free-icons/trash" title="trash icons">Trash icons created by Freepik - Flaticon</a>
+search icon
+<a href="https://www.flaticon.com/free-icons/search" title="search icons">Search icons created by Freepik - Flaticon</a>
+unarchive
+<a href="https://www.flaticon.com/free-icons/unarchive" title="unarchive icons">Unarchive icons created by Bharat Icons - Flaticon</a>
+
+<a href="https://www.flaticon.com/free-icons/back" title="back icons">Back icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/arrow" title="arrow icons">Arrow icons created by Kirill Kazachek - Flaticon</a>
+down icon
+<a href="https://www.flaticon.com/free-icons/arrow" title="arrow icons">Arrow icons created by Freepik - Flaticon</a>
