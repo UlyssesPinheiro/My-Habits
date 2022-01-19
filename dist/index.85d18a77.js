@@ -519,8 +519,7 @@ function hmrAcceptRun(bundle, id) {
 }
 
 },{}],"aGkuE":[function(require,module,exports) {
-var _model = require("./model");
-_model.testing();
+var _model = require("./model"); // module.testing();
 
 },{"./model":"d6boK"}],"d6boK":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
