@@ -1,0 +1,29 @@
+:root {
+  --responsive-title-color: limegreen;
+  --responsive-days-color: greenyellow;
+  --responsive-habits-div-color: indianred;
+  --responsive-credits-color: lightskyblue;
+  --responsive-notes-color: lightcyan;
+}
+.grid-container {
+  display: grid;
+}
+
+.title {
+  background-color: var(--responsive-title-color);
+}
+.days {
+  background-color: var(--responsive-days-color);
+}
+.habits-div {
+  background-color: var(--responsive-habits-div-color);
+}
+.credits {
+  background-color: var(--responsive-credits-color);
+}
+.notes {
+  background-color: var(--responsive-notes-color);
+}
+
+body {
+}
