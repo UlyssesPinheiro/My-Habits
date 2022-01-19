@@ -7,15 +7,17 @@
   /* --responsive-credits-color: lightskyblue; */
   --responsive-notes-color: lightcyan;
 
-  --column-width: 25vw 72vw;
+  --column-width: 25vw 75vw;
   --header-font-size: 2rem;
   --header-font-family: "Sansita", sans-serif;
   --default-opacity: 30%;
+
+  --grid-padding-left: 2rem;
 }
 
-* {
+/* * {
   border: 1px dashed black;
-}
+} */
 
 body {
   margin: 0;
@@ -29,7 +31,6 @@ body {
     "title days"
     "habits-div habits-div"
     "credits notes";
-  padding-left: 3vw;
 }
 
 /*============== RESPONSIVE DESIGN============== */
@@ -39,6 +40,7 @@ body {
   grid-area: title;
   display: flex;
   align-items: center;
+  padding-left: var(--grid-padding-left);
 }
 .days {
   background-color: var(--responsive-days-color);
@@ -49,18 +51,22 @@ body {
   display: grid;
   grid-template-columns: var(--column-width);
   grid-template-rows: repeat(50, 10vh);
-  gap: 1px;
   grid-area: habits-div;
 }
 .habit-name {
   background-color: var(--responsive-habit-name-color);
+  padding-left: var(--grid-padding-left);
 }
 .habit-progress {
   background-color: var(--responsive-habit-progress-color);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
 }
 .credits {
   background-color: var(--responsive-credits-color);
   grid-area: credits;
+  padding-left: var(--grid-padding-left);
 }
 .notes {
   background-color: var(--responsive-notes-color);
@@ -96,4 +102,17 @@ h1 {
   display: inline-block;
   position: relative;
   bottom: 5px;
+}
+
+/*============== Habit progress ============== */
+
+.circle {
+  width: 4rem;
+  height: 4rem;
+  -webkit-border-radius: 2rem;
+  -moz-border-radius: 2rem;
+  border-radius: 2rem;
+  border: 1px solid black;
+  margin: 10px;
+  flex-shrink: 0;
 }
