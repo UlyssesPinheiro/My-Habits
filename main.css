@@ -1,20 +1,21 @@
 :root {
-  --responsive-title-color: limegreen;
+  /* --responsive-title-color: limegreen; */
   --responsive-days-color: greenyellow;
   --responsive-habits-div-color: mistyrose;
   --responsive-habit-name-color: lightcoral;
   --responsive-habit-progress-color: lightpink;
-  --responsive-credits-color: lightskyblue;
+  /* --responsive-credits-color: lightskyblue; */
   --responsive-notes-color: lightcyan;
 
   --column-width: 25vw 72vw;
   --header-font-size: 2rem;
   --header-font-family: "Sansita", sans-serif;
+  --default-opacity: 30%;
 }
 
-/* * {
+* {
   border: 1px dashed black;
-} */
+}
 
 body {
   margin: 0;
@@ -23,7 +24,7 @@ body {
 .grid-container {
   display: grid;
   grid-template-columns: var(--column-width);
-  grid-template-rows: 15vh 75vh 10vh;
+  grid-template-rows: 15vh 70vh 15vh;
   grid-template-areas:
     "title days"
     "habits-div habits-div"
@@ -86,6 +87,8 @@ body {
 /*============== Header ============== */
 .icon {
   height: var(--header-font-size);
+  opacity: var(--default-opacity);
+  margin: 0.5rem;
 }
 h1 {
   height: var(--header-font-size);
