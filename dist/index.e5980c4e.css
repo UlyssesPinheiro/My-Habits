@@ -7,8 +7,15 @@
   --responsive-credits-color: lightskyblue;
   --responsive-notes-color: lightcyan;
 
-  --column-width: 25vw 75vw;
+  --column-width: 25vw 70vw;
+  --header-font-size: 2rem;
+  --header-font-family: "Sansita", sans-serif;
 }
+
+* {
+  border: 2px dotted pink;
+}
+
 body {
   margin: 0;
 }
@@ -21,7 +28,10 @@ body {
     "title days"
     "habits-div habits-div"
     "credits notes";
+  padding-left: 5vh;
 }
+
+/*============== RESPONSIVE DESIGN============== */
 
 .title {
   background-color: var(--responsive-title-color);
@@ -59,10 +69,30 @@ body {
     grid-template-columns: 1fr;
     grid-template-rows: 13vh 13vh 58vh 10vh 6vh;
     grid-template-areas: "title" "days" "habits-div" "notes" "credits";
+    padding-left: 0;
   }
   .habits-div {
     grid-template-columns: 1fr;
   }
+  .title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
+
+/*============== Header ============== */
+.icon {
+  height: var(--header-font-size);
+}
+h1 {
+  height: var(--header-font-size);
+  font-family: var(--header-font-family);
+  position: relative;
+  bottom: 5px;
+}
+
+/* .title-child-container {
+} */
 
 /*# sourceMappingURL=index.e5980c4e.css.map */

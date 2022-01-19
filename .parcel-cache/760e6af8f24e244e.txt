@@ -1,4 +1,4 @@
-12407
+12408
 85C:\Users\porta\Desktop\Habit tracker\node_modules\@babel\core\src\transformation\util132870079607750350 1
 94C:\Users\porta\Desktop\Habit tracker\node_modules\http-proxy-middleware\dist\handlers\index.js132870079581061344 0
 60C:\Users\porta\Desktop\Habit tracker\node_modules\buffer-xor132870079573178600 1
@@ -39,7 +39,7 @@
 92C:\Users\porta\Desktop\Habit tracker\node_modules\es-abstract\2020\CreateIterResultObject.js132870079616369217 0
 70C:\Users\porta\Desktop\Habit tracker\node_modules\yaml\browser\util.js132870079601679105 0
 71C:\Users\porta\Desktop\Habit tracker\node_modules\@babel\core\README.md132870079555651673 0
-45C:\Users\porta\Desktop\Habit tracker\main.css132870839733322385 0
+45C:\Users\porta\Desktop\Habit tracker\main.css132870863045793505 0
 83C:\Users\porta\Desktop\Habit tracker\node_modules\es-abstract\2016\UTF16Encoding.js132870079667938911 0
 69C:\Users\porta\Desktop\Habit tracker\node_modules\css-tree\lib\common132870079614282073 1
 123C:\Users\porta\Desktop\Habit tracker\node_modules\stream-http\node_modules\readable-stream\lib\internal\streams\pipeline.js132870079584328387 0
@@ -70,7 +70,7 @@
 63C:\Users\porta\Desktop\Habit tracker\node_modules\source-map-js132870079589880866 1
 84C:\Users\porta\Desktop\Habit tracker\node_modules\@parcel\core\lib\public\Symbols.js132870079615483923 0
 72C:\Users\porta\Desktop\Habit tracker\node_modules\object-is\package.json132870079580693948 0
-41C:\Users\porta\Desktop\Habit tracker\dist132870843051198042 1
+41C:\Users\porta\Desktop\Habit tracker\dist132870863046747620 1
 86C:\Users\porta\Desktop\Habit tracker\node_modules\highlight.js\lib\languages\groovy.js132870079616859056 0
 64C:\Users\porta\Desktop\Habit tracker\node_modules\http-proxy\lib132870079581310135 1
 81C:\Users\porta\Desktop\Habit tracker\node_modules\core-js\es\typed-array\slice.js132870079677140470 0
@@ -109,7 +109,7 @@
 79C:\Users\porta\Desktop\Habit tracker\node_modules\which-boxed-primitive\.github132870079577839101 1
 82C:\Users\porta\Desktop\Habit tracker\node_modules\css-tree\lib\syntax\node\Hash.js132870079606618782 0
 54C:\Users\porta\Desktop\Habit tracker\node_modules\jake132870079590746422 1
-47C:\Users\porta\Desktop\Habit tracker\index.html132870843050308488 0
+47C:\Users\porta\Desktop\Habit tracker\index.html132870862815137354 0
 78C:\Users\porta\Desktop\Habit tracker\node_modules\core-js\stable\math\clz32.js132870079616949025 0
 47C:\Users\porta\Desktop\Habit tracker\JavaScript132870079016642002 1
 81C:\Users\porta\Desktop\Habit tracker\node_modules\core-js\features\parse-float.js132870079674866088 0
@@ -6377,7 +6377,7 @@
 92C:\Users\porta\Desktop\Habit tracker\node_modules\es-abstract\2020\RequireObjectCoercible.js132870079651081414 0
 72C:\Users\porta\Desktop\Habit tracker\node_modules\emphasize\package.json132870079562893923 0
 74C:\Users\porta\Desktop\Habit tracker\node_modules\follow-redirects\http.js132870079558762740 0
-60C:\Users\porta\Desktop\Habit tracker\dist\index.e5980c4e.css132870839734081874 0
+60C:\Users\porta\Desktop\Habit tracker\dist\index.e5980c4e.css132870863046657700 0
 86C:\Users\porta\Desktop\Habit tracker\node_modules\highlight.js\scss\androidstudio.scss132870079623771549 0
 81C:\Users\porta\Desktop\Habit tracker\node_modules\caniuse-lite\data\regions\SH.js132870079663348474 0
 86C:\Users\porta\Desktop\Habit tracker\node_modules\highlight.js\scss\arduino-light.scss132870079623821513 0
@@ -9061,6 +9061,7 @@
 86C:\Users\porta\Desktop\Habit tracker\node_modules\core-js\modules\es.string.pad-end.js132870079644399915 0
 82C:\Users\porta\Desktop\Habit tracker\node_modules\core-js\modules\es.string.raw.js132870079644459889 0
 90C:\Users\porta\Desktop\Habit tracker\node_modules\core-js\modules\es.string.replace-all.js132870079644549856 0
+73C:\Users\porta\Desktop\Habit tracker\dist\archive-filled-box.52eec9c6.png132870844744615049 0
 86C:\Users\porta\Desktop\Habit tracker\node_modules\core-js\modules\es.string.replace.js132870079644589838 0
 86C:\Users\porta\Desktop\Habit tracker\node_modules\core-js\features\string\pad-start.js132870079674812958 0
 73C:\Users\porta\Desktop\Habit tracker\node_modules\brace-expansion\LICENSE132870079558541379 0
@@ -10912,7 +10913,7 @@
 73C:\Users\porta\Desktop\Habit tracker\node_modules\browserslist\index.d.ts132870079578569222 0
 70C:\Users\porta\Desktop\Habit tracker\node_modules\browserslist\LICENSE132870079553405157 0
 70C:\Users\porta\Desktop\Habit tracker\node_modules\browserslist\node.js132870079569062258 0
-64C:\Users\porta\Desktop\Habit tracker\dist\index.e5980c4e.css.map132870839734081874 0
+64C:\Users\porta\Desktop\Habit tracker\dist\index.e5980c4e.css.map132870863046737639 0
 72C:\Users\porta\Desktop\Habit tracker\node_modules\browserslist\README.md132870079575973950 0
 75C:\Users\porta\Desktop\Habit tracker\node_modules\browserslist\update-db.js132870079572568843 0
 76C:\Users\porta\Desktop\Habit tracker\node_modules\browserify-zlib\.npmignore132870079555571354 0
@@ -12405,4 +12406,4 @@
 56C:\Users\porta\Desktop\Habit tracker\Icons\unarchive.png132869936685100000 0
 71C:\Users\porta\Desktop\Habit tracker\dist\Habit tracker.3464ddca.js.map132870090539358115 0
 63C:\Users\porta\Desktop\Habit tracker\dist\index.85d18a77.js.map132870739941436362 0
-52C:\Users\porta\Desktop\Habit tracker\dist\index.html132870760112655879 0
+52C:\Users\porta\Desktop\Habit tracker\dist\index.html132870848466670970 0
