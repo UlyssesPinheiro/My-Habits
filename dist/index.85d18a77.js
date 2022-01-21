@@ -519,15 +519,14 @@ function hmrAcceptRun(bundle, id) {
 }
 
 },{}],"aGkuE":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _model = require("./model");
-var _habitProgressView = require("./Views/habitProgressView");
 var _view = require("./Views/view");
-var _viewDefault = parcelHelpers.interopDefault(_view);
 // module.testing();
-_habitProgressView.createCircles();
+_view.createObjects(`<div class="circle"></div>`, `.habit-progress`);
+_view.createObjects(`<div class="circle"></div>`, `.days`);
+_view.createObjects(`<div class="circle"></div>`, `.notes`);
 
-},{"./model":"d6boK","./Views/view":"8NZpH","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./Views/habitProgressView":"kchCb"}],"d6boK":[function(require,module,exports) {
+},{"./model":"d6boK","./Views/view":"8NZpH"}],"d6boK":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "testing", ()=>testing
@@ -567,13 +566,11 @@ exports.export = function(dest, destName, get) {
 };
 
 },{}],"8NZpH":[function(require,module,exports) {
-
-},{}],"kchCb":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "createCircles", ()=>createCircles
+parcelHelpers.export(exports, "createObjects", ()=>createObjects
 );
-function createCircles() {
+function createObjects(object, targetElement) {
     const circle = document.querySelector(".circle");
     const width = document.querySelector(".habit-progress").offsetWidth;
     const circleWidth = circle.offsetWidth;
@@ -583,12 +580,12 @@ function createCircles() {
     console.log(circleWidth, circleMargin, circleTotalWidth);
     const amountOfCircles = Math.floor(width / circleTotalWidth);
     console.log(amountOfCircles);
-    const habitProgress = document.querySelectorAll(".habit-progress");
+    const habitProgress = document.querySelectorAll(targetElement);
     [
         ...habitProgress
     ].forEach((element)=>{
         let markup = "";
-        for(let i = 0; i < amountOfCircles; i++)markup = markup + `<div class="circle"></div>`;
+        for(let i = 0; i < amountOfCircles; i++)markup = markup + `${object}`;
         console.log(markup);
         element.innerHTML = markup;
     });

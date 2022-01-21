@@ -71,9 +71,12 @@ body {
 .notes {
   background-color: var(--responsive-notes-color);
   grid-area: notes;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
 }
 
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width: 850px) {
   .grid-container {
     grid-template-columns: 1fr;
     grid-template-rows: 13vh 13vh 58vh 10vh 6vh;
@@ -107,6 +110,7 @@ h1 {
 /*============== Habit progress ============== */
 
 .circle {
+  display: inline-block;
   width: 4rem;
   height: 4rem;
   -webkit-border-radius: 2rem;
