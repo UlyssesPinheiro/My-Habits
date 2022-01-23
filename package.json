@@ -1,12 +1,8 @@
 {
-  "dependencies": {
-    "parcel": "^2.2.1"
-  },
   "name": "my-habits",
   "description": "My Habits is a website application used to track habits and log progress daily,\r to check how you are evolving.",
   "version": "1.0.0",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
     "start": "parcel index.html"
   },

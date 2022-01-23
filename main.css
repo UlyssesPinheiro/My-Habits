@@ -1,18 +1,24 @@
 :root {
   /* --responsive-title-color: limegreen; */
-  --responsive-days-color: greenyellow;
+  /* --responsive-days-color: greenyellow; */
   --responsive-habits-div-color: mistyrose;
   --responsive-habit-name-color: lightcoral;
   --responsive-habit-progress-color: lightpink;
   /* --responsive-credits-color: lightskyblue; */
   --responsive-notes-color: lightcyan;
+  --responsive-notes-color: white;
 
   --column-width: 25vw 75vw;
   --header-font-size: 2rem;
   --header-font-family: "Sansita", sans-serif;
+  --header2-font-family: "Roboto", sans-serif;
   --default-opacity: 30%;
+  --darker-opacity: 40%;
 
   --grid-padding-left: 2rem;
+
+  --default-size: 4rem;
+  --default-margin: 10px;
 }
 
 /* * {
@@ -38,13 +44,16 @@ body {
 .title {
   background-color: var(--responsive-title-color);
   grid-area: title;
-  display: flex;
-  align-items: center;
+  /* display: flex;
+  align-items: center; */
   padding-left: var(--grid-padding-left);
 }
 .days {
   background-color: var(--responsive-days-color);
   grid-area: days;
+  /* display: flex; */
+  align-items: center;
+  overflow: hidden;
 }
 .habits-div {
   background-color: var(--responsive-habits-div-color);
@@ -59,8 +68,8 @@ body {
 }
 .habit-progress {
   background-color: var(--responsive-habit-progress-color);
-  display: flex;
-  align-items: flex-end;
+  /* display: flex;
+  align-items: flex-end; */
   overflow: hidden;
 }
 .credits {
@@ -71,8 +80,8 @@ body {
 .notes {
   background-color: var(--responsive-notes-color);
   grid-area: notes;
-  display: flex;
-  align-items: flex-end;
+  /* display: flex;
+  align-items: center; */
   overflow: hidden;
 }
 
@@ -90,6 +99,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-left: 0;
   }
 }
 
@@ -108,15 +118,47 @@ h1 {
 }
 
 /*============== Habit progress ============== */
-
 .circle {
   display: inline-block;
-  width: 4rem;
-  height: 4rem;
   -webkit-border-radius: 2rem;
   -moz-border-radius: 2rem;
   border-radius: 2rem;
   border: 1px solid black;
+}
+
+/*============== Days ============== */
+.day {
+  text-align: center;
+  display: inline-block;
+  margin: var(--default-margin);
+}
+
+.day-h1 {
+  font-family: var(--header2-font-family);
+  display: block;
+  width: auto;
+  margin: auto;
+}
+.weekday {
+  opacity: var(--darker-opacity);
+}
+
+.divider-days-weeks {
+  width: 3rem;
+  margin: 0.5rem;
+  border: solid 1px black;
+  opacity: var(--darker-opacity);
+}
+
+/*============== Notes ============== */
+.view-icon {
+  width: var(--default-size);
+  height: var(--default-size);
   margin: 10px;
   flex-shrink: 0;
+}
+.note {
+  display: inline-block;
+  margin: 1px;
+  opacity: var(--default-opacity);
 }

@@ -1,10 +1,13 @@
-import * as module from "./model";
-import * as view from "./Views/view";
+import * as model from "./model.js";
+import * as view from "./Views/view.js";
 
-// module.testing();
+function init() {
+  model.init();
+  view.renderObjects(model.state);
+  window.addEventListener("resize", function () {
+    model.init();
+    // view.renderObjects(model.state);
+  });
+}
 
-view.createObjects(`<div class="circle"></div>`, `.habit-progress`);
-
-view.createObjects(`<div class="circle"></div>`, `.days`);
-
-view.createObjects(`<div class="circle"></div>`, `.notes`);
+init();
