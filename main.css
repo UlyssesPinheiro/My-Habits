@@ -44,16 +44,17 @@ body {
 .title {
   background-color: var(--responsive-title-color);
   grid-area: title;
-  /* display: flex;
-  align-items: center; */
   padding-left: var(--grid-padding-left);
+  margin-top: auto;
+  margin-bottom: auto;
 }
 .days {
-  background-color: var(--responsive-days-color);
+  /* background-color: var(--responsive-days-color); */
   grid-area: days;
-  /* display: flex; */
   align-items: center;
   overflow: hidden;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 .habits-div {
   background-color: var(--responsive-habits-div-color);
@@ -76,13 +77,15 @@ body {
   background-color: var(--responsive-credits-color);
   grid-area: credits;
   padding-left: var(--grid-padding-left);
+  margin-top: auto;
+  margin-bottom: auto;
 }
 .notes {
   background-color: var(--responsive-notes-color);
   grid-area: notes;
-  /* display: flex;
-  align-items: center; */
   overflow: hidden;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 @media only screen and (max-width: 850px) {
@@ -129,8 +132,10 @@ h1 {
 /*============== Days ============== */
 .day {
   text-align: center;
-  display: inline-block;
   margin: var(--default-margin);
+  width: var(--default-size);
+  float: left;
+  padding: 1px;
 }
 
 .day-h1 {

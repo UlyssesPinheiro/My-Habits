@@ -6,7 +6,7 @@ function init() {
   view.renderObjects(model.state);
   window.addEventListener("resize", function () {
     model.init();
-    // view.renderObjects(model.state);
+    view.renderObjects(model.state);
   });
 }
 
