@@ -1,5 +1,5 @@
 const circle = `<div class="circle view-icon"></div>`;
-const note = `<div class="note"><img class="view-icon" src="/Icons/noteBlank.svg" alt="notes image" /></div>`;
+const note = `<div class="note"><img class="view-icon" src="Icons/noteBlank.svg" alt="notes image" /></div>`;
 const day = `
 <div class="day">
   <h1 class="day-h1">17</h1>
