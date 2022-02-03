@@ -84,7 +84,7 @@ p {
   color: var(--main-color2);
 }
 .icon:hover {
-  color: var(--main-color3);
+  color: var(--main-color4);
 }
 
 /*============== RESPONSIVE DESIGN============== */
@@ -144,7 +144,7 @@ p {
   gap: 20px;
 }
 .note:hover {
-  opacity: 50%;
+  opacity: 60%;
 }
 
 /*============== Header ============== */
@@ -193,7 +193,7 @@ p {
   border: 1px solid var(--gray-color6);
 }
 .circle:hover {
-  border-color: var(--gray-color8);
+  border-color: var(--gray-color9);
 }
 
 /*============== Days ============== */
@@ -219,7 +219,7 @@ p {
 .divider-days-weeks {
   width: 3rem;
   margin: 0.5rem;
-  border: solid 1px var(--main-color3);
+  border-bottom: solid 2px var(--main-color3);
   opacity: 99%;
 }
 
