@@ -10,6 +10,7 @@
 
   --column-width: 30vw 70vw;
   --header-font-size: 2rem;
+  --header2-font-size: 1.5rem;
   --header-font-family: "Sansita", sans-serif;
   --header2-font-family: "Roboto", sans-serif;
   --default-opacity: 30%;
@@ -18,6 +19,7 @@
   --grid-padding-left: 2rem;
 
   --default-size: 60px;
+  --default-size-mobile: 35px;
   /* --default-margin: 10px; */
   --default-gap: 20px;
 
@@ -61,6 +63,12 @@ h1 {
   font-family: var(--header-font-family);
   display: inline-block;
 }
+
+h2 {
+  height: var(--header2-font-size);
+  font-family: var(--header-font-family);
+  display: inline-block;
+}
 p {
   font-family: var(--header2-font-family);
 }
@@ -83,8 +91,13 @@ p {
   font-size: 25px;
   color: var(--main-color2);
 }
-.icon:hover {
+.icon:hover,
+.icon:active {
   color: var(--main-color4);
+}
+
+.icon-h2 {
+  font-size: 1.3rem;
 }
 
 /*============== RESPONSIVE DESIGN============== */
@@ -170,8 +183,9 @@ p {
   border-bottom: 1px solid var(--gray-color5);
 }
 
-.habit-h1 {
+.habit-h2 {
   font-family: var(--header2-font-family);
+  font-size: var(--header2-font-size);
 }
 
 /*============== Habit progress ============== */
@@ -201,7 +215,11 @@ p {
   text-align: center;
   width: var(--default-size);
   float: left;
-  padding: 1px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 70%;
 }
 
 .day-h1 {
@@ -217,8 +235,8 @@ p {
 }
 
 .divider-days-weeks {
-  width: 3rem;
-  margin: 0.5rem;
+  width: 90%;
+  margin-bottom: 0.5rem;
   border-bottom: solid 2px var(--main-color3);
   opacity: 99%;
 }
@@ -272,7 +290,9 @@ p {
   }
   .habit-progress {
     justify-content: center;
-    padding-left: 19px;
+    @media screen (max-width: $desktop) {
+      padding-left: 19px;
+    }
   }
   .header-shaddow {
     grid-column: 1 / 2;
@@ -284,8 +304,29 @@ p {
   }
   .credits {
     text-align: center;
+    padding: 0;
   }
   .notes {
     justify-content: center;
+  }
+}
+
+@media screen and (max-width: 435px) {
+  .habit-name {
+    padding-left: 30px;
+  }
+  .habits-div {
+    grid-auto-rows: 60px 75px;
+  }
+  .day {
+    width: var(--default-size-mobile);
+  }
+
+  .circle {
+    width: var(--default-size-mobile);
+    height: var(--default-size-mobile);
+  }
+  .note {
+    width: var(--default-size-mobile);
   }
 }

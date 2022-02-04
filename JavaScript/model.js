@@ -20,6 +20,9 @@ export function testing() {
 
 export function calculateAmountOfDays() {
   const width = document.querySelector(".habit-progress").offsetWidth;
+  if (width < 435) {
+    state.daySizePixels = 40;
+  }
   // const circle = document.querySelector(".circle");
   // const circleWidth = circle.offsetWidth;
   // const circleMargin = +window.getComputedStyle(circle).margin.slice(0, -2);
@@ -45,3 +48,10 @@ export function displayedDays() {
   }
   // console.log(state.displayedDays);
 }
+
+const vw = Math.max(
+  document.documentElement.clientWidth || 0,
+  window.innerWidth || 0
+);
+
+console.log(vw);

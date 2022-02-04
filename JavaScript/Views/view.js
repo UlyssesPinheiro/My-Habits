@@ -1,10 +1,11 @@
 const circle = `<div class="circle view-icon"></div>`;
-const note = `<div class="note"><img class="view-icon" src="Icons/noteBlank.svg" alt="notes image" /></div>`;
+// const note = `<div class="note"><img class="view-icon" src="Icons/noteBlank.svg" alt="notes image" /></div>`;
+const note = `<img class="note view-icon" src="Icons/noteBlank.svg" alt="notes image" />`;
 const day = `
 <div class="day">
-  <h1 class="day-h1">17</h1>
+  <span class="day-h1">17</span>
     <div class="divider-days-weeks"></div>
-  <h1 class="day-h1 weekday">M</h1>
+  <span class="day-h1 weekday">M</span>
 </div>`;
 
 export function renderObjects(state) {
