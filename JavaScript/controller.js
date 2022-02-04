@@ -11,3 +11,11 @@ function init() {
 }
 
 init();
+
+const addHabitHandler = function () {
+  view.createNewHabit(model.state);
+};
+
+document
+  .querySelector(".add-habit-icon")
+  .addEventListener("click", addHabitHandler);

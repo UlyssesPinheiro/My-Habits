@@ -38,4 +38,20 @@ export function createObjects(object = "", targetElement, state, weekdays) {
     }
     element.innerHTML = markup;
   });
+  document.querySelector(".habit-progress:last-child").innerHTML = "";
+  console.log(document.querySelector(".habit-progress:last-child"));
+}
+
+export function createNewHabit(state) {
+  const element = document.querySelector(".habits-div");
+
+  const markup = `
+  <div class="habit-name">
+    <h2 class="habit-h2">Goal 1</h2>
+    <i class="fas fa-pen icon icon-h2"></i>
+  </div>
+  <div class="habit-progress">Habit Progress</div>`;
+
+  element.insertAdjacentHTML("afterbegin", markup);
+  renderObjects(state);
 }
