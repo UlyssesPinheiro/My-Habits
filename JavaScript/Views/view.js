@@ -16,7 +16,7 @@ export function renderObjects(state) {
 
 export function createObjects(object = "", targetElement, state, weekdays) {
   const { amountOfDays, displayedDays } = state;
-  console.log(displayedDays[0].getDate());
+  // console.log(displayedDays[0].getDate());
 
   const habitProgress = document.querySelectorAll(targetElement);
   [...habitProgress].forEach((element) => {

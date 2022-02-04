@@ -4,7 +4,7 @@ export const state = {
   amountOfDays: 0,
   displayedDays: [],
   currentDate: "",
-  daySizePixels: 60,
+  daySizePixels: 0,
   daySizeGap: 20,
 };
 
@@ -12,6 +12,7 @@ export function init() {
   currentDate();
   calculateAmountOfDays();
   displayedDays();
+  return state;
 }
 
 export function testing() {
@@ -20,8 +21,12 @@ export function testing() {
 
 export function calculateAmountOfDays() {
   const width = document.querySelector(".habit-progress").offsetWidth;
-  if (width < 435) {
+  const documentWidth = document.querySelector("body").offsetWidth;
+  console.log("habit-progress width:", width);
+  if (documentWidth <= 700) {
     state.daySizePixels = 40;
+  } else {
+    state.daySizePixels = 60;
   }
   // const circle = document.querySelector(".circle");
   // const circleWidth = circle.offsetWidth;
@@ -30,6 +35,7 @@ export function calculateAmountOfDays() {
   state.amountOfDays = Math.floor(
     width / (state.daySizePixels + state.daySizeGap)
   );
+  console.log("state day size pixels:", state.daySizePixels);
 }
 
 export function currentDate() {
