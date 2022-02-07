@@ -290,30 +290,33 @@ p {
   left: 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr;
+  grid-template-rows: auto 1fr;
   grid-template-areas:
-    "title goal-amout-header"
-    "description goal-amount-unit"
-    "description goal-amout-partial-header"
-    "description goal-amount-partial-unit";
+    "title add-goal-right-container"
+    "description add-goal-right-container";
 
   width: 100vw;
   gap: 10px;
   padding: 10px;
   max-width: var(--max-box-size);
+  border-radius: 10px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.096);
+}
+.add-goal-title {
+  grid-area: title;
 }
 
 .add-goal-description {
   grid-area: description;
 }
+.add-goal-right-container {
+  grid-area: add-goal-right-container;
+}
+
 .add-goal-amount-header {
-  grid-area: goal-amout-header;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+  margin: 10px 0;
 }
 .add-goal-amount-unit {
-  grid-area: goal-amount-unit;
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -327,14 +330,14 @@ p {
   grid-template-columns: 1fr 1fr;
 }
 .add-goal-amount-partial-header {
-  grid-area: goal-amout-partial-header;
+  margin-bottom: 10px;
 }
 .add-goal-amount-partial-unit {
-  grid-area: goal-amount-partial-unit;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 10px;
+  margin-bottom: 20px;
 }
 
 .add-goal-item {
@@ -346,7 +349,19 @@ p {
 .partial-complete {
   font-size: 14px;
 }
-
+.add-goal-button {
+  font-size: 16px;
+  width: 100%;
+  height: 30px;
+  border: none;
+  background-color: var(--main-color1);
+  color: var(--gray-color9);
+  border-radius: 1000px;
+  font-family: var(--header2-font-family);
+}
+.add-goal-button:hover {
+  background-color: var(--main-color2);
+}
 /* ============ At Media ============== */
 
 @media only screen and (max-width: 850px) {
@@ -421,9 +436,7 @@ p {
   .add-goal-box {
     height: auto;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(6, 10%);
-    grid-template-areas:
-      "title" "description" "goal-amout-header" "goal-amount-unit"
-      "goal-amout-partial-header" "goal-amount-partial-unit";
+    grid-template-rows: 1fr 1fr auto;
+    grid-template-areas: "title" "description" "add-goal-right-container";
   }
 }
