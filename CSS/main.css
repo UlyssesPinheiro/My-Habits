@@ -1,3 +1,8 @@
+/*
+FONT SIZE SYSTEM (px)
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+*/
+
 :root {
   /* --responsive-title-color: limegreen; */
   /* --responsive-days-color: greenyellow; */
@@ -277,13 +282,15 @@ p {
 
 /* =========== Add Goal ================ */
 .add-goal-box {
+  /* 18 / 20 / 24 */
+  font-size: 20px;
   background-color: white;
   position: absolute;
   top: 100%;
   left: 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 4fr 1fr 4fr;
+  grid-template-rows: 1fr;
   grid-template-areas:
     "title goal-amout-header"
     "description goal-amount-unit"
@@ -307,16 +314,26 @@ p {
 }
 .add-goal-amount-unit {
   grid-area: goal-amount-unit;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.unit-amount {
   display: grid;
+  width: 100%;
+  gap: 10px;
   grid-template-columns: 1fr 1fr;
-  align-items: center;
 }
 .add-goal-amount-partial-header {
   grid-area: goal-amout-partial-header;
 }
 .add-goal-amount-partial-unit {
   grid-area: goal-amount-partial-unit;
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   gap: 10px;
 }
 
@@ -324,6 +341,10 @@ p {
   border: var(--default-border);
   border-radius: 5px;
   padding: 5px;
+}
+
+.partial-complete {
+  font-size: 14px;
 }
 
 /* ============ At Media ============== */
