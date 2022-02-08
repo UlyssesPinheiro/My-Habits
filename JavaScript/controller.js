@@ -24,8 +24,10 @@ document
 
 const addGoalButtonHandler = function (e) {
   e.preventDefault();
-  const state = model.getAddNewHabitFormInput();
-  view.createNewHabit(state);
+  if (view.checkNewHabitFormInput()) {
+    const state = model.getAddNewHabitFormInput();
+    view.createNewHabit(state);
+  }
 };
 
 addGoalButton.addEventListener("click", addGoalButtonHandler);

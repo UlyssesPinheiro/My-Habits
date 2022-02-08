@@ -47,17 +47,22 @@
           <i class="fas fa-plus icon add-habit-icon"></i>
 
           <form action="submit" class="add-goal-box">
-            <input
-              type="text"
-              name="Title"
-              placeholder="Title"
-              class="add-goal-item add-goal-title"
-            />
-            <textarea
-              name="Description"
-              placeholder="Description"
-              class="add-goal-item add-goal-description"
-            ></textarea>
+            <div class="add-goal-left-container">
+              <p class="add-goal-main-header">New Goal</p>
+              <input
+                type="text"
+                name="Title"
+                placeholder="Goal Title *"
+                class="add-goal-item add-goal-title"
+                required
+              />
+              <textarea
+                name="Description"
+                placeholder="Description"
+                class="add-goal-item add-goal-description"
+                maxlength="200"
+              ></textarea>
+            </div>
 
             <div class="add-goal-right-container">
               <div class="add-goal-amount-header">
@@ -68,9 +73,10 @@
                   <input
                     type="number"
                     name="Amount"
-                    placeholder="Amount"
+                    placeholder="Amount *"
                     class="add-goal-item"
                     id="goal-amount-value"
+                    required
                   />
                   <select
                     name="Unit"
@@ -94,9 +100,10 @@
                   <input
                     type="number"
                     name="Amount"
-                    placeholder="Amount"
+                    placeholder="Amount *"
                     class="add-goal-item"
                     id="partial-goal-amount-value"
+                    required
                   />
                   <select
                     name="Unit"

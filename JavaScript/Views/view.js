@@ -66,3 +66,24 @@ export function createNewHabit(state) {
 export function showNewHabitForm() {
   form.style.display = "grid";
 }
+
+// ========================= Parei aqui =================
+export function checkNewHabitFormInput() {
+  const title = document.querySelector(".add-goal-title");
+  const goalAmountValue = document.querySelector("#goal-amount-value");
+  const partialGoalAmountValue = document.querySelector(
+    "#partial-goal-amount-value"
+  );
+
+  if (title.value && goalAmountValue.value && partialGoalAmountValue.value) {
+    // Correct
+    return true;
+  } else {
+    // Incorrect
+    if (!title.value) title.classList.add("form-required");
+    if (!goalAmountValue.value) goalAmountValue.classList.add("form-required");
+    if (!partialGoalAmountValue.value)
+      partialGoalAmountValue.classList.add("form-required");
+    return false;
+  }
+}

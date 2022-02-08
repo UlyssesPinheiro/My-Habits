@@ -30,7 +30,7 @@ FONT SIZE SYSTEM (px)
 
   --form-default-font-size: 20px;
 
-  --default-border: 1px solid #adb5bd;
+  --default-border: 1px solid #dee2e6;
 
   --max-box-size: 600px;
 
@@ -101,11 +101,11 @@ p {
   /* margin-top: auto;
   margin-bottom: auto; */
   font-size: 25px;
-  color: var(--main-color2);
+  color: var(--main-color4);
 }
 .icon:hover,
 .icon:active {
-  color: var(--main-color4);
+  color: var(--main-color9);
 }
 
 .icon-h2 {
@@ -114,8 +114,8 @@ p {
 
 .close-window-x {
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: 10px;
+  right: 10px;
 }
 
 /*============== RESPONSIVE DESIGN============== */
@@ -260,7 +260,7 @@ p {
 .divider-days-weeks {
   width: 90%;
   margin-bottom: 0.5rem;
-  border-bottom: solid 2px var(--main-color3);
+  border-bottom: solid 2px var(--main-color4);
 }
 
 /*============== Notes ============== */
@@ -293,35 +293,45 @@ p {
   /* will change to grid */
   display: none;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto 1fr;
-  grid-template-areas:
-    "title add-goal-right-container"
-    "description add-goal-right-container";
+  grid-template-areas: "add-goal-left-container add-goal-right-container";
 
   width: 100vw;
-  gap: 10px;
-  padding: 10px;
+  gap: 20px;
+  padding: 20px;
   max-width: var(--max-box-size);
   border-radius: 10px;
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.096);
 }
 .add-goal-title {
-  font-size: var(--form-default-font-size);
+  font-size: 16px;
   grid-area: title;
 }
 
 .add-goal-description {
-  font-size: var(--form-default-font-size);
+  font-size: 16px;
   font-family: var(--header2-font-family);
   grid-area: description;
 }
+.add-goal-main-header {
+  grid-area: "main-header";
+  font-weight: 600;
+  height: auto;
+}
 
+.add-goal-left-container {
+  grid-area: add-goal-left-container;
+  display: grid;
+  grid-template-areas: "main-header" "title" "description";
+  grid-template-rows: auto auto 1fr;
+  gap: 10px;
+}
 .add-goal-right-container {
   grid-area: add-goal-right-container;
 }
 
 .add-goal-amount-header {
-  margin: 10px 0;
+  font-weight: 600;
+  margin-bottom: 10px;
 }
 .add-goal-amount-unit {
   display: flex;
@@ -337,13 +347,18 @@ p {
   grid-template-columns: 1fr 1fr;
 }
 .unit-amount input {
-  font-size: 18px;
+  color: var(--gray-color9);
+  font-size: 16px;
   width: 100%;
 }
 .unit-amount select {
-  font-size: 18px;
+  color: var(--gray-color7);
+
+  font-size: 16px;
 }
 .add-goal-amount-partial-header {
+  font-weight: 600;
+
   margin-bottom: 10px;
 }
 .add-goal-amount-partial-unit {
@@ -362,20 +377,28 @@ p {
 
 .partial-complete {
   font-size: 14px;
+  color: var(--gray-color6);
 }
 .add-goal-button {
   font-size: 16px;
   width: 100%;
   height: 30px;
   border: none;
-  background-color: var(--main-color1);
+  background-color: var(--main-color4);
   color: var(--gray-color9);
   border-radius: 1000px;
   font-family: var(--header2-font-family);
+  color: var(--gray-color0);
 }
 .add-goal-button:hover {
-  background-color: var(--main-color2);
+  background-color: var(--main-color8);
 }
+
+.form-required {
+  border: 1px solid rgb(221, 65, 65);
+  background-color: #ffe8e8;
+}
+
 /* ============ At Media ============== */
 
 @media only screen and (max-width: 850px) {
@@ -451,9 +474,6 @@ p {
     height: auto;
     grid-template-columns: 1fr;
     grid-template-rows: auto;
-    grid-template-areas: "title" "description" "add-goal-right-container";
-  }
-  .add-goal-title {
-    width: 90%;
+    grid-template-areas: "add-goal-left-container" "add-goal-right-container";
   }
 }
