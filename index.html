@@ -18,7 +18,6 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="CSS/main.css" />
-    <link rel="stylesheet" href="CSS/addGoal.css" />
     <script src="JavaScript/controller.js" type="module"></script>
   </head>
   <body>
@@ -46,9 +45,19 @@
         <div class="habit-progress">Habit Progress</div> -->
         <div class="habit-name" style="border-bottom: none">
           <i class="fas fa-plus icon add-habit-icon"></i>
+
           <form action="submit" class="add-goal-box">
-            <div class="add-goal-item add-goal-title">Title</div>
-            <div class="add-goal-item add-goal-description">Description</div>
+            <input
+              type="text"
+              name="Title"
+              placeholder="Title"
+              class="add-goal-item add-goal-title"
+            />
+            <textarea
+              name="Description"
+              placeholder="Description"
+              class="add-goal-item add-goal-description"
+            ></textarea>
 
             <div class="add-goal-right-container">
               <div class="add-goal-amount-header">
@@ -56,8 +65,23 @@
               </div>
               <div class="add-goal-amount-unit">
                 <div class="unit-amount">
-                  <div class="add-goal-item">Unit</div>
-                  <div class="add-goal-item">Amount</div>
+                  <input
+                    type="number"
+                    name="Amount"
+                    placeholder="Amount"
+                    class="add-goal-item"
+                    id="goal-amount-value"
+                  />
+                  <select
+                    name="Unit"
+                    class="add-goal-item"
+                    id="goal-amount-unit"
+                  >
+                    <option value="Many times">Many times</option>
+                    <option value="Minutes">Minutes</option>
+                    <option value="Hours">Hours</option>
+                    <option value="Yes or No">Yes or No</option>
+                  </select>
                 </div>
                 <div class="partial-complete">
                   Partially complete goal?
@@ -67,11 +91,30 @@
               <div class="add-goal-amount-partial-header">Partial amount</div>
               <div class="add-goal-amount-partial-unit">
                 <div class="unit-amount">
-                  <div class="add-goal-item">Unit</div>
-                  <div class="add-goal-item">Amount</div>
+                  <input
+                    type="number"
+                    name="Amount"
+                    placeholder="Amount"
+                    class="add-goal-item"
+                    id="partial-goal-amount-value"
+                  />
+                  <select
+                    name="Unit"
+                    class="add-goal-item"
+                    id="partial-goal-amount-unit"
+                  >
+                    <option value="Many times">Many times</option>
+                    <option value="Minutes">Minutes</option>
+                    <option value="Hours">Hours</option>
+                    <option value="Yes or No">Yes or No</option>
+                  </select>
                 </div>
               </div>
-              <button class="add-goal-button">Create Goal</button>
+              <input
+                type="submit"
+                class="add-goal-button"
+                value="Create Goal"
+              />
             </div>
             <i class="fas fa-times icon close-window-x"></i>
           </form>

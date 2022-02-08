@@ -6,6 +6,8 @@ export const state = {
   currentDate: "",
   daySizePixels: 0,
   daySizeGap: 20,
+
+  newHabitFormInput: {},
 };
 
 export function init() {
@@ -22,7 +24,7 @@ export function testing() {
 export function calculateAmountOfDays() {
   const width = document.querySelector(".habit-progress").offsetWidth;
   const documentWidth = document.querySelector("body").offsetWidth;
-  console.log("habit-progress width:", width);
+  // console.log("habit-progress width:", width);
   if (documentWidth <= 700) {
     state.daySizePixels = 40;
   } else {
@@ -35,7 +37,7 @@ export function calculateAmountOfDays() {
   state.amountOfDays = Math.floor(
     width / (state.daySizePixels + state.daySizeGap)
   );
-  console.log("state day size pixels:", state.daySizePixels);
+  // console.log("state day size pixels:", state.daySizePixels);
 }
 
 export function currentDate() {
@@ -45,7 +47,7 @@ export function currentDate() {
 
 export function displayedDays() {
   state.displayedDays = [];
-  console.log(state.amountOfDays);
+  // console.log(state.amountOfDays);
   for (let i = 0; i < state.amountOfDays; i++) {
     let calcDate = new Date(
       new Date().setDate(state.currentDate.getDate() + i)
@@ -60,4 +62,26 @@ const vw = Math.max(
   window.innerWidth || 0
 );
 
-console.log(vw);
+// console.log(vw);
+
+export function getAddNewHabitFormInput(e) {
+  state.newHabitFormInput.title =
+    document.querySelector(".add-goal-title").value;
+  state.newHabitFormInput.description = document.querySelector(
+    ".add-goal-description"
+  ).value;
+  state.newHabitFormInput.goalAmountValue =
+    document.querySelector("#goal-amount-value").value;
+  state.newHabitFormInput.goalAmountUnit =
+    document.querySelector("#goal-amount-unit").value;
+
+  state.newHabitFormInput.partialGoalAmountValue = document.querySelector(
+    "#partial-goal-amount-value"
+  ).value;
+  state.newHabitFormInput.partialGgoalAmountUnit = document.querySelector(
+    "#partial-goal-amount-unit"
+  ).value;
+
+  // console.log(state.newHabitFormInput);
+  return state;
+}

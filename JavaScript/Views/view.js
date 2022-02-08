@@ -7,6 +7,12 @@ const day = `
     <div class="divider-days-weeks"></div>
   <span class="day-h1 weekday">M</span>
 </div>`;
+const form = document.querySelector(".add-goal-box");
+
+function init() {
+  form.style.display = "none";
+}
+init();
 
 export function renderObjects(state) {
   createObjects(day, `.days`, state, true);
@@ -39,19 +45,24 @@ export function createObjects(object = "", targetElement, state, weekdays) {
     element.innerHTML = markup;
   });
   document.querySelector(".habit-progress:last-child").innerHTML = "";
-  console.log(document.querySelector(".habit-progress:last-child"));
+  // console.log(document.querySelector(".habit-progress:last-child"));
 }
 
 export function createNewHabit(state) {
+  form.style.display = "none";
   const element = document.querySelector(".habits-div");
 
   const markup = `
   <div class="habit-name">
-    <h2 class="habit-h2">Goal 1</h2>
+    <h2 class="habit-h2">${state.newHabitFormInput.title}</h2>
     <i class="fas fa-pen icon icon-h2"></i>
   </div>
   <div class="habit-progress">Habit Progress</div>`;
 
   element.insertAdjacentHTML("afterbegin", markup);
   renderObjects(state);
+}
+
+export function showNewHabitForm() {
+  form.style.display = "grid";
 }

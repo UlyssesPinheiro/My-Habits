@@ -28,6 +28,8 @@ FONT SIZE SYSTEM (px)
   /* --default-margin: 10px; */
   --default-gap: 20px;
 
+  --form-default-font-size: 20px;
+
   --default-border: 1px solid #adb5bd;
 
   --max-box-size: 600px;
@@ -283,12 +285,13 @@ p {
 /* =========== Add Goal ================ */
 .add-goal-box {
   /* 18 / 20 / 24 */
-  font-size: 20px;
+  font-size: var(--form-default-font-size);
   background-color: white;
   position: absolute;
   top: 100%;
   left: 0;
-  display: grid;
+  /* will change to grid */
+  display: none;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto 1fr;
   grid-template-areas:
@@ -303,12 +306,16 @@ p {
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.096);
 }
 .add-goal-title {
+  font-size: var(--form-default-font-size);
   grid-area: title;
 }
 
 .add-goal-description {
+  font-size: var(--form-default-font-size);
+  font-family: var(--header2-font-family);
   grid-area: description;
 }
+
 .add-goal-right-container {
   grid-area: add-goal-right-container;
 }
@@ -328,6 +335,13 @@ p {
   width: 100%;
   gap: 10px;
   grid-template-columns: 1fr 1fr;
+}
+.unit-amount input {
+  font-size: 18px;
+  width: 100%;
+}
+.unit-amount select {
+  font-size: 18px;
 }
 .add-goal-amount-partial-header {
   margin-bottom: 10px;
@@ -436,7 +450,10 @@ p {
   .add-goal-box {
     height: auto;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr auto;
+    grid-template-rows: auto;
     grid-template-areas: "title" "description" "add-goal-right-container";
+  }
+  .add-goal-title {
+    width: 90%;
   }
 }
