@@ -7,10 +7,11 @@ const day = `
     <div class="divider-days-weeks"></div>
   <span class="day-h1 weekday">M</span>
 </div>`;
-const form = document.querySelector(".add-goal-box");
+const newHabitForm = document.querySelector(".add-goal-box");
 
 function init() {
-  form.style.display = "none";
+  clearForm(newHabitForm);
+  hideForm(newHabitForm);
 }
 init();
 
@@ -49,9 +50,10 @@ export function createObjects(object = "", targetElement, state, weekdays) {
 }
 
 export function createNewHabit(state) {
-  form.style.display = "none";
+  hideForm(newHabitForm);
   const element = document.querySelector(".habits-div");
 
+  // <i class="fas fa-pen icon icon-h2"></i>
   const markup = `
   <div class="habit-name">
     <h2 class="habit-h2">${state.newHabitFormInput.title}</h2>
@@ -63,11 +65,39 @@ export function createNewHabit(state) {
   renderObjects(state);
 }
 
-export function showNewHabitForm() {
+export function showForm(form) {
   form.style.display = "grid";
 }
 
-// ========================= Parei aqui =================
+export function hideForm(form) {
+  form = idForm(form);
+  form.style.display = "none";
+  clearForm(form);
+}
+
+export function clearForm(form) {
+  //removes the required warnings
+  form
+    .querySelectorAll(".form-required")
+    .forEach((e) => e.classList.remove("form-required"));
+
+  //removes the previus input values
+  form.querySelectorAll("input").forEach((e) => {
+    if (e.getAttribute("type") === "submit") return;
+    return (e.value = "");
+  });
+  form.querySelectorAll("textarea").forEach((e) => {
+    return (e.value = "");
+  });
+}
+
+export function idForm(e) {
+  if (e.target) {
+    return e.target.closest("form");
+  }
+  return e.closest("form");
+}
+
 export function checkNewHabitFormInput() {
   const title = document.querySelector(".add-goal-title");
   const goalAmountValue = document.querySelector("#goal-amount-value");

@@ -272,7 +272,6 @@ p {
 }
 .note {
   display: inline-block;
-  margin: 1px;
   opacity: var(--default-opacity);
 }
 
@@ -289,7 +288,7 @@ p {
   background-color: white;
   position: absolute;
   top: 100%;
-  left: 0;
+  left: 40px;
   /* will change to grid */
   display: none;
   grid-template-columns: 1fr 1fr;
@@ -471,6 +470,8 @@ p {
     width: var(--default-size-mobile);
   }
   .add-goal-box {
+    width: 100%;
+    left: 0;
     height: auto;
     grid-template-columns: 1fr;
     grid-template-rows: auto;

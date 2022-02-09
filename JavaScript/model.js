@@ -1,5 +1,3 @@
-import * as controller from "./controller.js";
-
 export const state = {
   amountOfDays: 0,
   displayedDays: [],
@@ -8,6 +6,7 @@ export const state = {
   daySizeGap: 20,
 
   newHabitFormInput: {},
+  habits: [],
 };
 
 export function init() {
@@ -24,16 +23,9 @@ export function testing() {
 export function calculateAmountOfDays() {
   const width = document.querySelector(".habit-progress").offsetWidth;
   const documentWidth = document.querySelector("body").offsetWidth;
-  // console.log("habit-progress width:", width);
-  if (documentWidth <= 700) {
-    state.daySizePixels = 40;
-  } else {
-    state.daySizePixels = 60;
-  }
-  // const circle = document.querySelector(".circle");
-  // const circleWidth = circle.offsetWidth;
-  // const circleMargin = +window.getComputedStyle(circle).margin.slice(0, -2);
-  // const circleTotalWidth = circleWidth + circleMargin * 2;
+
+  state.daySizePixels = documentWidth <= 700 ? 40 : 60;
+
   state.amountOfDays = Math.floor(
     width / (state.daySizePixels + state.daySizeGap)
   );
@@ -57,13 +49,6 @@ export function displayedDays() {
   // console.log(state.displayedDays);
 }
 
-const vw = Math.max(
-  document.documentElement.clientWidth || 0,
-  window.innerWidth || 0
-);
-
-// console.log(vw);
-
 export function getAddNewHabitFormInput(e) {
   state.newHabitFormInput.title =
     document.querySelector(".add-goal-title").value;
@@ -78,10 +63,15 @@ export function getAddNewHabitFormInput(e) {
   state.newHabitFormInput.partialGoalAmountValue = document.querySelector(
     "#partial-goal-amount-value"
   ).value;
-  state.newHabitFormInput.partialGgoalAmountUnit = document.querySelector(
+  state.newHabitFormInput.partialGoalAmountUnit = document.querySelector(
     "#partial-goal-amount-unit"
   ).value;
 
   // console.log(state.newHabitFormInput);
   return state;
+}
+
+export function pushNewHabitToList(state) {
+  state.habits.push(state.newHabitFormInput);
+  console.log(state.habits);
 }
