@@ -55,17 +55,21 @@ export function getAddNewHabitFormInput(e) {
   state.newHabitFormInput.description = document.querySelector(
     ".add-goal-description"
   ).value;
-  state.newHabitFormInput.goalAmountValue =
-    document.querySelector("#goal-amount-value").value;
-  state.newHabitFormInput.goalAmountUnit =
-    document.querySelector("#goal-amount-unit").value;
 
-  state.newHabitFormInput.partialGoalAmountValue = document.querySelector(
-    "#partial-goal-amount-value"
+  state.newHabitFormInput.partial = document.queryCommandIndeterm(
+    "#partial-goal-checkbox"
   ).value;
-  state.newHabitFormInput.partialGoalAmountUnit = document.querySelector(
-    "#partial-goal-amount-unit"
-  ).value;
+  // state.newHabitFormInput.goalAmountValue =
+  //   document.querySelector("#goal-amount-value").value;
+  // state.newHabitFormInput.goalAmountUnit =
+  //   document.querySelector("#goal-amount-unit").value;
+
+  // state.newHabitFormInput.partialGoalAmountValue = document.querySelector(
+  //   "#partial-goal-amount-value"
+  // ).value;
+  // state.newHabitFormInput.partialGoalAmountUnit = document.querySelector(
+  //   "#partial-goal-amount-unit"
+  // ).value;
 
   // console.log(state.newHabitFormInput);
   return state;

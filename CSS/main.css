@@ -32,7 +32,7 @@ FONT SIZE SYSTEM (px)
 
   --default-border: 1px solid #dee2e6;
 
-  --max-box-size: 600px;
+  --max-box-size: 400px;
 
   --main-color0: #f3f0ff;
   --main-color1: #e5dbff;
@@ -84,6 +84,15 @@ h2 {
 }
 p {
   font-family: var(--header2-font-family);
+}
+
+a:link,
+a:visited {
+  color: var(--gray-color6);
+}
+a:link:hover,
+a:visited:hover {
+  color: var(--main-color7);
 }
 
 .grid-container {
@@ -291,12 +300,11 @@ p {
   left: 40px;
   /* will change to grid */
   display: none;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas: "add-goal-left-container add-goal-right-container";
-
+  flex-direction: column;
   width: 100vw;
-  gap: 20px;
+  /* gap: 15px; */
   padding: 20px;
+  min-height: 200px;
   max-width: var(--max-box-size);
   border-radius: 10px;
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.096);
@@ -306,8 +314,14 @@ p {
   grid-area: title;
 }
 
+.habit-name input::placeholder,
+.habit-name textarea::placeholder {
+  color: var(--gray-color7);
+}
+
 .add-goal-description {
   font-size: 16px;
+  resize: none;
   font-family: var(--header2-font-family);
   grid-area: description;
 }
@@ -320,12 +334,21 @@ p {
 .add-goal-left-container {
   grid-area: add-goal-left-container;
   display: grid;
-  grid-template-areas: "main-header" "title" "description";
+  grid-template-areas: "main-header" "title-name" "title" "description-name" "description";
   grid-template-rows: auto auto 1fr;
-  gap: 10px;
+}
+.title-name {
+  grid-area: "title-name";
+}
+.description-name {
+  grid-area: "description-name";
 }
 .add-goal-right-container {
   grid-area: add-goal-right-container;
+}
+.form-subheader {
+  font-size: 16px;
+  margin: 15px 0 5px;
 }
 
 .add-goal-amount-header {
@@ -369,12 +392,16 @@ p {
 }
 
 .add-goal-item {
+  /* width: 100%; */
   border: var(--default-border);
   border-radius: 5px;
   padding: 5px;
 }
 
 .partial-complete {
+  display: flex;
+  gap: 10px;
+  margin: 15px 0;
   font-size: 14px;
   color: var(--gray-color6);
 }

@@ -47,26 +47,27 @@
           <i class="fas fa-plus icon add-habit-icon"></i>
 
           <form action="submit" class="add-goal-box">
-            <div class="add-goal-left-container">
-              <p class="add-goal-main-header">New Goal</p>
-              <input
-                type="text"
-                name="Title"
-                placeholder="Goal Title *"
-                class="add-goal-item add-goal-title"
-                required
-              />
-              <textarea
-                name="Description"
-                placeholder="Description"
-                class="add-goal-item add-goal-description"
-                maxlength="200"
-              ></textarea>
-            </div>
+            <p class="add-goal-main-header">New Goal</p>
 
-            <div class="add-goal-right-container">
+            <p class="form-subheader title-name">Title:</p>
+            <input
+              type="text"
+              name="Title"
+              placeholder="Drink water every day"
+              class="add-goal-item add-goal-title"
+              required
+            />
+            <p class="form-subheader description-name">Description:</p>
+            <textarea
+              placeholder="Drink 3 cups of water per day"
+              class="add-goal-item add-goal-description"
+              maxlength="200"
+            ></textarea>
+
+            <!-- <div class="add-goal-right-container">
+              
               <div class="add-goal-amount-header">
-                <p>Goal amount</p>
+                <p>Amount per day</p>
               </div>
               <div class="add-goal-amount-unit">
                 <div class="unit-amount">
@@ -122,7 +123,16 @@
                 class="add-goal-button"
                 value="Create Goal"
               />
+            </div> -->
+
+            <div class="partial-complete">
+              Partially complete goal?
+              <input type="checkbox" id="partial-goal-checkbox" />
+              <a href="">what is this?</a>
             </div>
+
+            <input type="submit" class="add-goal-button" value="Create Goal" />
+
             <i class="fas fa-times icon close-window-x"></i>
           </form>
         </div>
