@@ -56,9 +56,9 @@ export function getAddNewHabitFormInput(e) {
     ".add-goal-description"
   ).value;
 
-  state.newHabitFormInput.partial = document.queryCommandIndeterm(
+  state.newHabitFormInput.partial = document.querySelector(
     "#partial-goal-checkbox"
-  ).value;
+  ).checked;
   // state.newHabitFormInput.goalAmountValue =
   //   document.querySelector("#goal-amount-value").value;
   // state.newHabitFormInput.goalAmountUnit =
