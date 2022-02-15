@@ -4,15 +4,6 @@ FONT SIZE SYSTEM (px)
 */
 
 :root {
-  /* --responsive-title-color: limegreen; */
-  /* --responsive-days-color: greenyellow; */
-  /* --responsive-habits-div-color: #ececec; */
-  /* --responsive-habit-name-color: lightcoral;
-  --responsive-habit-progress-color: lightpink; */
-  /* --responsive-credits-color: lightskyblue; */
-  --responsive-notes-color: lightcyan;
-  --responsive-notes-color: white;
-
   --column-width: 30vw 70vw;
   --header-font-size: 2rem;
   --header2-font-size: 1.5rem;
@@ -25,7 +16,6 @@ FONT SIZE SYSTEM (px)
 
   --default-size: 60px;
   --default-size-mobile: 35px;
-  /* --default-margin: 10px; */
   --default-gap: 20px;
 
   --form-default-font-size: 20px;
@@ -68,7 +58,6 @@ FONT SIZE SYSTEM (px)
 
 body {
   margin: 0;
-  /* background-image: url(images/paper.jpg); */
 }
 
 h1 {
@@ -77,11 +66,11 @@ h1 {
   display: inline-block;
 }
 
-h2 {
+/* h2 {
   height: var(--header2-font-size);
   font-family: var(--header-font-family);
   display: inline-block;
-}
+} */
 p {
   font-family: var(--header2-font-family);
 }
@@ -107,8 +96,6 @@ a:visited:hover {
 
 .icon {
   margin: 0.5rem;
-  /* margin-top: auto;
-  margin-bottom: auto; */
   font-size: 25px;
   color: var(--main-color4);
 }
@@ -130,7 +117,6 @@ a:visited:hover {
 /*============== RESPONSIVE DESIGN============== */
 
 .title {
-  background-color: var(--responsive-title-color);
   grid-area: title;
   padding-left: var(--grid-padding-left);
   display: flex;
@@ -171,7 +157,6 @@ a:visited:hover {
 }
 
 .credits {
-  background-color: var(--responsive-credits-color);
   grid-area: credits;
   padding-left: var(--grid-padding-left);
   display: flex;
@@ -180,7 +165,6 @@ a:visited:hover {
   z-index: 1;
 }
 .notes {
-  background-color: var(--responsive-notes-color);
   grid-area: notes;
   overflow: hidden;
   display: flex;
@@ -204,7 +188,6 @@ a:visited:hover {
 
 /*============== Habit Name ============== */
 .habit-name {
-  background-color: var(--responsive-habit-name-color);
   padding-left: var(--grid-padding-left);
   font-family: var(--header2-font-family);
   color: var(--gray-color8);
@@ -223,7 +206,6 @@ a:visited:hover {
 /*============== Habit progress ============== */
 
 .habit-progress {
-  background-color: var(--responsive-habit-progress-color);
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -302,7 +284,6 @@ a:visited:hover {
   display: none;
   flex-direction: column;
   width: 100vw;
-  /* gap: 15px; */
   padding: 20px;
   min-height: 200px;
   max-width: var(--max-box-size);
@@ -326,69 +307,13 @@ a:visited:hover {
   grid-area: description;
 }
 .add-goal-main-header {
-  grid-area: "main-header";
   font-weight: 600;
   height: auto;
 }
 
-.add-goal-left-container {
-  grid-area: add-goal-left-container;
-  display: grid;
-  grid-template-areas: "main-header" "title-name" "title" "description-name" "description";
-  grid-template-rows: auto auto 1fr;
-}
-.title-name {
-  grid-area: "title-name";
-}
-.description-name {
-  grid-area: "description-name";
-}
-.add-goal-right-container {
-  grid-area: add-goal-right-container;
-}
 .form-subheader {
   font-size: 16px;
   margin: 15px 0 5px;
-}
-
-.add-goal-amount-header {
-  font-weight: 600;
-  margin-bottom: 10px;
-}
-.add-goal-amount-unit {
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-.unit-amount {
-  display: grid;
-  width: 100%;
-  gap: 10px;
-  grid-template-columns: 1fr 1fr;
-}
-.unit-amount input {
-  color: var(--gray-color9);
-  font-size: 16px;
-  width: 100%;
-}
-.unit-amount select {
-  color: var(--gray-color7);
-
-  font-size: 16px;
-}
-.add-goal-amount-partial-header {
-  font-weight: 600;
-
-  margin-bottom: 10px;
-}
-.add-goal-amount-partial-unit {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 10px;
-  margin-bottom: 20px;
 }
 
 .add-goal-item {
@@ -500,8 +425,5 @@ a:visited:hover {
     width: 100%;
     left: 0;
     height: auto;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    grid-template-areas: "add-goal-left-container" "add-goal-right-container";
   }
 }
