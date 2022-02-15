@@ -67,11 +67,6 @@ h1 {
   display: inline-block;
 }
 
-/* h2 {
-  height: var(--header2-font-size);
-  font-family: var(--header-font-family);
-  display: inline-block;
-} */
 p {
   font-family: var(--roboto-font-family);
 }

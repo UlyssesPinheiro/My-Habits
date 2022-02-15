@@ -40,8 +40,9 @@ closeWindowX.addEventListener("click", view.hideForm.bind(newHabitForm));
 
 document.addEventListener("click", (e) => {
   if (e.target.closest(".circle")) {
-    console.log(e.target);
-    e.target.style.borderColor = "#5f3dc4";
-    e.target.style.backgroundColor = "#9775fa";
+    const circle = e.target.closest(".circle");
+    console.log(circle);
+    model.editHabit(circle);
+    view.fillCircle(circle);
   }
 });

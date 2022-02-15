@@ -32,9 +32,9 @@ export function createObjects(object = "", targetElement, state, weekdays) {
     for (let i = 0; i < amountOfDays; i++) {
       if (weekdays === true) {
         object = `
-        <div class="day">
+        <div class="day" date="${displayedDays[i].toDateString()}">
           <h1 class="day-h1">${displayedDays[i].getDate()}</h1>
-            <div class="divider-days-weeks"></div>
+          <div class="divider-days-weeks"></div>
           <h1 class="day-h1 weekday">${displayedDays[i]
             .toLocaleTimeString("en-us", {
               weekday: "short",
@@ -117,4 +117,12 @@ export function checkNewHabitFormInput() {
     if (!title.value) title.classList.add("form-required");
     return false;
   }
+}
+
+export function fillCircle(e) {
+  e.innerHTML = `<img src="Icons/goal-complete.svg" alt="goal complete">`;
+}
+
+export function clearCircle(e) {
+  e.innerHTML = "";
 }

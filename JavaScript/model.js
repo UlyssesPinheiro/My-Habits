@@ -60,10 +60,45 @@ export function getAddNewHabitFormInput(e) {
     "#partial-goal-checkbox"
   ).checked;
 
+  state.newHabitFormInput.data = [];
+
   return state;
 }
 
 export function pushNewHabitToList(state) {
   state.habits.push(state.newHabitFormInput);
   console.log(state.habits);
+}
+
+export function editHabit(e) {
+  console.log(e);
+  const index = Array.from(e.parentNode.children).indexOf(e);
+
+  const days = document.querySelector(".days");
+  const currentDay = Array.from(days.children)[index];
+
+  const currentTime = currentDay.getAttribute("date");
+
+  //find which habit is the target
+  const habit = e
+    .closest(".habit-progress")
+    .previousElementSibling.querySelector("h2").innerHTML;
+
+  const stateHabit =
+    state.habits[state.habits.findIndex((e) => e.title === habit)];
+
+  const dayAlreadyExists = stateHabit.data.findIndex(
+    (e) => e[0] === currentTime
+  );
+
+  console.log(dayAlreadyExists);
+  if (dayAlreadyExists !== -1) {
+    stateHabit.data[dayAlreadyExists][1] =
+      !stateHabit.data[dayAlreadyExists][1];
+    console.log(stateHabit.data[dayAlreadyExists]);
+    console.log(state);
+    return;
+  }
+
+  stateHabit.data.push([currentTime, true]);
 }
