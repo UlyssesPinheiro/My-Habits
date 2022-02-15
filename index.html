@@ -36,6 +36,37 @@
           <span class="day-h1 weekday">M</span>
         </div>
       </header>
+
+      <form action="submit" class="add-goal-box">
+        <p class="add-goal-main-header">New Goal</p>
+
+        <p class="form-subheader title-name">Title:</p>
+        <input
+          type="text"
+          name="Title"
+          placeholder="Drink water every day"
+          class="add-goal-item add-goal-title"
+          required
+        />
+        <p class="form-subheader description-name">Description:</p>
+        <textarea
+          placeholder="Drink 3 cups of water per day"
+          class="add-goal-item add-goal-description"
+          maxlength="200"
+        ></textarea>
+
+        <div class="partial-complete">
+          <p>Partially complete goal?</p>
+
+          <input type="checkbox" id="partial-goal-checkbox" />
+          <a href="">what is this?</a>
+        </div>
+
+        <input type="submit" class="add-goal-button" value="Create Goal" />
+
+        <i class="fas fa-times icon close-window-x"></i>
+      </form>
+
       <div class="habits-div">
         <!-- <div class="habit-name">
           <h2 class="habit-h2">Goal 1</h2>
@@ -45,35 +76,6 @@
         <div class="habit-progress">Habit Progress</div> -->
         <div class="habit-name" style="border-bottom: none">
           <i class="fas fa-plus icon add-habit-icon"></i>
-
-          <form action="submit" class="add-goal-box">
-            <p class="add-goal-main-header">New Goal</p>
-
-            <p class="form-subheader title-name">Title:</p>
-            <input
-              type="text"
-              name="Title"
-              placeholder="Drink water every day"
-              class="add-goal-item add-goal-title"
-              required
-            />
-            <p class="form-subheader description-name">Description:</p>
-            <textarea
-              placeholder="Drink 3 cups of water per day"
-              class="add-goal-item add-goal-description"
-              maxlength="200"
-            ></textarea>
-
-            <div class="partial-complete">
-              Partially complete goal?
-              <input type="checkbox" id="partial-goal-checkbox" />
-              <a href="">what is this?</a>
-            </div>
-
-            <input type="submit" class="add-goal-button" value="Create Goal" />
-
-            <i class="fas fa-times icon close-window-x"></i>
-          </form>
         </div>
 
         <div class="habit-progress" style="border-bottom: none"></div>
@@ -84,10 +86,13 @@
       <footer class="credits">
         <p class="credits-font">
           Created by Ulysses Pinheiro - 2022. <br />
-          Icons and images credits
+          Icons and images
+          <a href="">credits</a>
         </p>
       </footer>
       <footer class="notes">Notes</footer>
     </div>
+
+    <div class="form-backgroung-div"></div>
   </body>
 </html>

@@ -8,6 +8,7 @@ const day = `
   <span class="day-h1 weekday">M</span>
 </div>`;
 const newHabitForm = document.querySelector(".add-goal-box");
+const formBackgroungDiv = document.querySelector(".form-backgroung-div");
 
 function init() {
   clearForm(newHabitForm);
@@ -67,11 +68,16 @@ export function createNewHabit(state) {
 
 export function showForm(form) {
   form.style.display = "flex";
+  formBackgroungDiv.style.visibility = "visible";
+  formBackgroungDiv.style.opacity = "30%";
 }
 
 export function hideForm(form) {
   form = idForm(form);
   form.style.display = "none";
+  formBackgroungDiv.style.visibility = "hidden";
+  formBackgroungDiv.style.opacity = "0%";
+
   clearForm(form);
 }
 
@@ -84,6 +90,8 @@ export function clearForm(form) {
   //removes the previus input values
   form.querySelectorAll("input").forEach((e) => {
     if (e.getAttribute("type") === "submit") return;
+    if (e.getAttribute("type") === "checkbox") return (e.checked = false);
+
     return (e.value = "");
   });
   form.querySelectorAll("textarea").forEach((e) => {
@@ -100,10 +108,6 @@ export function idForm(e) {
 
 export function checkNewHabitFormInput() {
   const title = document.querySelector(".add-goal-title");
-  // const goalAmountValue = document.querySelector("#goal-amount-value");
-  // const partialGoalAmountValue = document.querySelector(
-  //   "#partial-goal-amount-value"
-  // );
 
   if (title.value) {
     // Correct
@@ -111,9 +115,6 @@ export function checkNewHabitFormInput() {
   } else {
     // Incorrect
     if (!title.value) title.classList.add("form-required");
-    // if (!goalAmountValue.value) goalAmountValue.classList.add("form-required");
-    // if (!partialGoalAmountValue.value)
-    //   partialGoalAmountValue.classList.add("form-required");
     return false;
   }
 }
