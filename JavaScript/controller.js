@@ -30,22 +30,18 @@ addGoalButton.addEventListener("click", function (e) {
     view.createNewHabit(state);
     model.pushNewHabitToList(state);
 
-    const habitsDiv = document.querySelector(".habits-div");
-    addEventListHabit(habitsDiv.querySelectorAll(".icon"));
-    addEventListHabit(habitsDiv.querySelectorAll(".circle"));
+    // const habitsDiv = document.querySelector(".habits-div");
+    // addEventListHabit(habitsDiv.querySelectorAll(".icon"));
+    // addEventListHabit(habitsDiv.querySelectorAll(".circle"));
   }
 });
 
 closeWindowX.addEventListener("click", view.hideForm.bind(newHabitForm));
 
-function addEventListHabit(targets) {
-  targets.forEach((e) => {
-    e.addEventListener("click", function () {
-      console.log(e);
-      if (e.classList.contains("circle")) {
-        e.style.borderColor = "#00b33c";
-        e.style.backgroundColor = "#66ff99";
-      }
-    });
-  });
-}
+document.addEventListener("click", (e) => {
+  if (e.target.closest(".circle")) {
+    console.log(e.target);
+    e.target.style.borderColor = "#5f3dc4";
+    e.target.style.backgroundColor = "#9775fa";
+  }
+});
