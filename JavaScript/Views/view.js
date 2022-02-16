@@ -1,6 +1,7 @@
-const circle = `<div class="circle view-icon"></div>`;
-// const note = `<div class="note"><img class="view-icon" src="Icons/noteBlank.svg" alt="notes image" /></div>`;
-const note = `<img class="note view-icon" src="Icons/noteBlank.svg" alt="notes image" />`;
+const circle = `<div class="circle view-icon"></div>
+`;
+const note = `<img class="note view-icon" src="Icons/noteBlank.svg" alt="notes image" />
+`;
 const day = `
 <div class="day">
   <span class="day-h1">17</span>
@@ -16,35 +17,95 @@ function init() {
 }
 init();
 
-export function renderObjects(state) {
-  createObjects(day, `.days`, state, true);
-  createObjects(circle, `.habit-progress`, state);
-  createObjects(note, `.notes`, state);
+export function renderObjects(state, renderOnly = "") {
+  if (renderOnly === "day") createObjects(day, `.days`, state);
+  if (renderOnly === "circle") createObjects(circle, `.habit-progress`, state);
+  if (renderOnly === "note") createObjects(note, `.notes`, state);
+
+  if (renderOnly === "") {
+    createObjects(day, `.days`, state);
+    createObjects(circle, `.habit-progress`, state);
+    createObjects(note, `.notes`, state);
+  }
 }
 
-export function createObjects(object = "", targetElement, state, weekdays) {
+export function createObjects(object = "", targetElement, state) {
   const { amountOfDays, displayedDays } = state;
   // console.log(displayedDays[0].getDate());
 
   const habitProgress = document.querySelectorAll(targetElement);
-  [...habitProgress].forEach((element) => {
+  [...habitProgress].forEach((element, habitProgressIndex) => {
     let markup = "";
-    for (let i = 0; i < amountOfDays; i++) {
-      if (weekdays === true) {
+
+    if (object === day) {
+      for (let i = 0; i < amountOfDays; i++) {
         object = `
-        <div class="day" date="${displayedDays[i].toDateString()}">
-          <h1 class="day-h1">${displayedDays[i].getDate()}</h1>
-          <div class="divider-days-weeks"></div>
-          <h1 class="day-h1 weekday">${displayedDays[i]
-            .toLocaleTimeString("en-us", {
-              weekday: "short",
-            })
-            .at(0)}</h1>
-        </div>`;
+      <div class="day" date="${displayedDays[i].toDateString()}">
+        <h1 class="day-h1">${displayedDays[i].getDate()}</h1>
+        <div class="divider-days-weeks"></div>
+        <h1 class="day-h1 weekday">${displayedDays[i]
+          .toLocaleTimeString("en-us", {
+            weekday: "short",
+          })
+          .at(0)}</h1>
+      </div>`;
+
+        markup = markup + `${object}`;
       }
-      markup = markup + `${object}`;
     }
-    element.innerHTML = markup;
+
+    if (object === circle && state.habits[habitProgressIndex]) {
+      markup = ``;
+      // let filledDays = [];
+      //generate markup with empty and filled days
+      //change the object value to the current circle (filled or unfilled)
+
+      const daysDiv = document.querySelectorAll(".day");
+
+      for (let i = 0; i < amountOfDays; i++) {
+        // let currDateIsFilled = false;
+        const curDate = daysDiv[i].getAttribute("date");
+
+        console.log(
+          state.habits[habitProgressIndex].data,
+          curDate,
+          state.habits[habitProgressIndex].data.length
+        );
+
+        if (state.habits[habitProgressIndex].data.length) {
+          // test if the curDate is on the state.habits[habitProgressIndex].data
+
+          const x = state.habits[habitProgressIndex].data.findIndex((habit) => {
+            if (habit[1]) return habit[0] === curDate; //if habit is set to true
+          });
+          // console.log(x);
+
+          markup +=
+            x !== -1
+              ? `<div class="circle view-icon"><img src="Icons/goal-complete.svg" alt="goal complete"></div>`
+              : `<div class="circle view-icon"></div>`;
+        } else {
+          markup += `<div class="circle view-icon"></div>`;
+        }
+      }
+    }
+
+    if (object === note) {
+      for (let i = 0; i < amountOfDays; i++) {
+        markup = markup + `${object}`;
+      }
+    }
+    element.innerHTML = "";
+
+    // if (object === circle) {
+    //   console.log("habitProgressIndex: ", habitProgressIndex);
+    //   console.log(element);
+    //   console.log("innerHTML: ", element.innerHTML);
+    //   console.log("Markup: ", markup);
+    // }
+
+    element.innerHTML = `${markup}`;
+    // if (object === circle) console.log("innerHTML after: ", element.innerHTML);
   });
   document.querySelector(".habit-progress:last-child").innerHTML = "";
   // console.log(document.querySelector(".habit-progress:last-child"));

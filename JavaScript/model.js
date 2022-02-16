@@ -62,16 +62,16 @@ export function getAddNewHabitFormInput(e) {
 
   state.newHabitFormInput.data = [];
 
-  return state;
+  pushNewHabitToList();
 }
 
-export function pushNewHabitToList(state) {
+export function pushNewHabitToList() {
   state.habits.push(state.newHabitFormInput);
-  console.log(state.habits);
+  // console.log(state.habits);
 }
 
 export function editHabit(e) {
-  console.log(e);
+  // console.log(e);
   const index = Array.from(e.parentNode.children).indexOf(e);
 
   const days = document.querySelector(".days");
@@ -84,21 +84,26 @@ export function editHabit(e) {
     .closest(".habit-progress")
     .previousElementSibling.querySelector("h2").innerHTML;
 
-  const stateHabit =
+  const currentHabit =
     state.habits[state.habits.findIndex((e) => e.title === habit)];
 
-  const dayAlreadyExists = stateHabit.data.findIndex(
-    (e) => e[0] === currentTime
-  );
+  const dayAlreadyExists = currentHabit.data.findIndex((e) => {
+    console.log(e[0]);
+    return e[0] === currentTime;
+  });
 
-  console.log(dayAlreadyExists);
+  // console.log(dayAlreadyExists);
+
+  // console.log(dayAlreadyExists);
   if (dayAlreadyExists !== -1) {
-    stateHabit.data[dayAlreadyExists][1] =
-      !stateHabit.data[dayAlreadyExists][1];
-    console.log(stateHabit.data[dayAlreadyExists]);
-    console.log(state);
-    return;
+    currentHabit.data[dayAlreadyExists][1] =
+      !currentHabit.data[dayAlreadyExists][1];
+    // console.log(currentHabit.data[dayAlreadyExists]);
+    // console.log(state);
+    // return currentHabit;
+  } else {
+    currentHabit.data.push([currentTime, true]);
   }
 
-  stateHabit.data.push([currentTime, true]);
+  // return currentHabit;
 }
