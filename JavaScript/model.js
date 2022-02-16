@@ -13,7 +13,7 @@ export function init() {
   currentDate();
   calculateAmountOfDays();
   displayedDays();
-  return state;
+  state.habits = JSON.parse(localStorage.getItem("storageHabits"));
 }
 
 export function testing() {
@@ -69,8 +69,9 @@ export function getAddNewHabitFormInput() {
 export function pushNewHabitToList() {
   const newObj = { ...state.newHabitFormInput };
   state.habits.unshift(newObj);
-  console.log(state.newHabitFormInput);
-  console.log(state.habits);
+  // console.log(state.newHabitFormInput);
+  // console.log(state.habits);
+  setStorage();
 }
 
 export function editHabit(e) {
@@ -95,18 +96,19 @@ export function editHabit(e) {
     return e[0] === currentTime;
   });
 
-  // console.log(dayAlreadyExists);
-
-  // console.log(dayAlreadyExists);
   if (dayAlreadyExists !== -1) {
     currentHabit.data[dayAlreadyExists][1] =
       !currentHabit.data[dayAlreadyExists][1];
-    // console.log(currentHabit.data[dayAlreadyExists]);
-    // console.log(state);
-    // return currentHabit;
   } else {
     currentHabit.data.push([currentTime, true]);
   }
 
-  // return currentHabit;
+  setStorage();
+}
+
+export function setStorage() {
+  // console.log(JSON.stringify(state.habits));
+  // console.log(JSON.parse(JSON.stringify(state.habits)));
+
+  localStorage.setItem("storageHabits", JSON.stringify(state.habits));
 }

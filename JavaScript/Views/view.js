@@ -112,18 +112,27 @@ export function createObjects(object = "", targetElement, state) {
   // console.log(document.querySelector(".habit-progress:last-child"));
 }
 
-export function createNewHabit(state) {
+export function renderHabits(state) {
   hideForm(newHabitForm);
   const element = document.querySelector(".habits-div");
 
-  // <i class="fas fa-pen icon icon-h2"></i>
-  const markup = `
-  <div class="habit-name">
-    <h2 class="habit-h2">${state.newHabitFormInput.title}</h2>
-    <i class="fas fa-pen icon icon-h2"></i>
-  </div>
-  <div class="habit-progress">Habit Progress</div>`;
+  let markup = ``;
 
+  state.habits.forEach((e) => {
+    markup += `
+    <div class="habit-name">
+      <h2 class="habit-h2">${e.title}</h2>
+      <i class="fas fa-pen icon icon-h2"></i>
+    </div>
+    <div class="habit-progress">Habit Progress</div>`;
+  });
+
+  element.innerHTML = `
+    <div class="habit-name" style="border-bottom: none">
+      <i class="fas fa-plus icon add-habit-icon"></i>
+    </div>
+    <div class="habit-progress" style="border-bottom: none"></div>
+  `;
   element.insertAdjacentHTML("afterbegin", markup);
   renderObjects(state);
 }

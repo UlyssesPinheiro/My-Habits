@@ -5,9 +5,11 @@ const addGoalButton = document.querySelector(".add-goal-button");
 const closeWindowX = document.querySelector(".close-window-x");
 const newHabitForm = document.querySelector(".add-goal-box");
 
-function init() {
+async function init() {
   model.init();
   view.renderObjects(model.state);
+  view.renderHabits(model.state);
+
   window.addEventListener("resize", function () {
     model.init();
     view.renderObjects(model.state);
@@ -16,18 +18,12 @@ function init() {
 
 init();
 
-document
-  .querySelector(".add-habit-icon")
-  .addEventListener("click", function () {
-    view.clearForm(newHabitForm);
-    view.showForm(newHabitForm);
-  });
-
 addGoalButton.addEventListener("click", function (e) {
   e.preventDefault();
   if (view.checkNewHabitFormInput()) {
     model.getAddNewHabitFormInput();
-    view.createNewHabit(model.state);
+
+    view.renderHabits(model.state);
   }
 });
 
@@ -39,6 +35,13 @@ document.addEventListener("click", (e) => {
     // console.log(circle);
     model.editHabit(circle);
     view.renderObjects(model.state, "circle");
+  }
+
+  if (e.target.closest(".add-habit-icon")) {
+    e.target.closest(".add-habit-icon").addEventListener("click", function () {
+      view.clearForm(newHabitForm);
+      view.showForm(newHabitForm);
+    });
   }
 });
 
