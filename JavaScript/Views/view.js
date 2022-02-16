@@ -66,11 +66,12 @@ export function createObjects(object = "", targetElement, state) {
         // let currDateIsFilled = false;
         const curDate = daysDiv[i].getAttribute("date");
 
-        console.log(
-          state.habits[habitProgressIndex].data,
-          curDate,
-          state.habits[habitProgressIndex].data.length
-        );
+        // console.log(
+        //   habitProgressIndex,
+        //   state.habits[habitProgressIndex].data,
+        //   curDate,
+        //   state.habits
+        // );
 
         if (state.habits[habitProgressIndex].data.length) {
           // test if the curDate is on the state.habits[habitProgressIndex].data

@@ -49,7 +49,7 @@ export function displayedDays() {
   // console.log(state.displayedDays);
 }
 
-export function getAddNewHabitFormInput(e) {
+export function getAddNewHabitFormInput() {
   state.newHabitFormInput.title =
     document.querySelector(".add-goal-title").value;
   state.newHabitFormInput.description = document.querySelector(
@@ -61,13 +61,16 @@ export function getAddNewHabitFormInput(e) {
   ).checked;
 
   state.newHabitFormInput.data = [];
+  // console.log(state.newHabitFormInput);
 
   pushNewHabitToList();
 }
 
 export function pushNewHabitToList() {
-  state.habits.push(state.newHabitFormInput);
-  // console.log(state.habits);
+  const newObj = { ...state.newHabitFormInput };
+  state.habits.unshift(newObj);
+  console.log(state.newHabitFormInput);
+  console.log(state.habits);
 }
 
 export function editHabit(e) {
