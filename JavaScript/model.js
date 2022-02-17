@@ -13,7 +13,9 @@ export function init() {
   currentDate();
   calculateAmountOfDays();
   displayedDays();
-  state.habits = JSON.parse(localStorage.getItem("storageHabits"));
+  if (JSON.parse(localStorage.getItem("storageHabits"))) {
+    state.habits = JSON.parse(localStorage.getItem("storageHabits"));
+  }
 }
 
 export function testing() {
