@@ -109,7 +109,7 @@ export function createObjects(object = "", targetElement, state) {
     // if (object === circle) console.log("innerHTML after: ", element.innerHTML);
   });
   document.querySelector(".habit-progress:last-child").innerHTML = "";
-  // console.log(document.querySelector(".habit-progress:last-child"));
+  alignWidthScrollBar();
 }
 
 export function renderHabits(state) {
@@ -196,4 +196,17 @@ export function fillCircle(e) {
 
 export function clearCircle(e) {
   e.innerHTML = "";
+}
+
+export function alignWidthScrollBar() {
+  const habitsDiv = document.querySelector(".habits-div");
+  const habitProgress = document.querySelectorAll(".habit-progress");
+  if (
+    habitsDiv.scrollWidth <
+    +window.getComputedStyle(habitsDiv).getPropertyValue("width").slice(0, -2)
+  ) {
+    habitProgress.forEach((e) => (e.style.paddingLeft = "19px"));
+  } else {
+    habitProgress.forEach((e) => (e.style.paddingLeft = "0"));
+  }
 }

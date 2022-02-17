@@ -94,7 +94,7 @@ export function editHabit(e) {
     state.habits[state.habits.findIndex((e) => e.title === habit)];
 
   const dayAlreadyExists = currentHabit.data.findIndex((e) => {
-    console.log(e[0]);
+    // console.log(e[0]);
     return e[0] === currentTime;
   });
 

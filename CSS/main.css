@@ -396,9 +396,6 @@ a:visited:hover {
   }
   .habit-progress {
     justify-content: center;
-    @media screen (max-width: $desktop) {
-      padding-left: 19px;
-    }
   }
   .header-shaddow {
     grid-column: 1 / 2;
