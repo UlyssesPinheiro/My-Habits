@@ -39,7 +39,26 @@ document.addEventListener("click", (e) => {
     view.clearForm(newHabitForm);
     view.showForm(newHabitForm);
   }
+
+  if (e.target.closest(".habit-edit")) {
+    handleHabitEditOptions(e.target.closest(".habit-name"));
+  }
+  if (e.target.closest(".habit-delete")) {
+    console.log(e.target.closest(".habit-name"));
+    model.deleteHabit(e.target.closest(".habit-name"));
+    view.renderHabits(model.state);
+  }
 });
+
+export function handleHabitEditOptions(target) {
+  if (!model.state.habitEditOptionsShown) {
+    view.showEditIcons(target);
+    model.state.habitEditOptionsShown = true;
+  } else {
+    view.hideEditIcons(target);
+    model.state.habitEditOptionsShown = false;
+  }
+}
 
 document.querySelector(".fa-archive").addEventListener("click", () => {
   view.renderObjects(model.state, "circle");

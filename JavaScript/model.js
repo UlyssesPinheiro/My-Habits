@@ -4,6 +4,7 @@ export const state = {
   currentDate: "",
   daySizePixels: 0,
   daySizeGap: 20,
+  habitEditOptionsShown: false,
 
   newHabitFormInput: {},
   habits: [],
@@ -109,8 +110,18 @@ export function editHabit(e) {
 }
 
 export function setStorage() {
-  // console.log(JSON.stringify(state.habits));
-  // console.log(JSON.parse(JSON.stringify(state.habits)));
-
   localStorage.setItem("storageHabits", JSON.stringify(state.habits));
+}
+
+export function deleteHabit(target) {
+  const name = target.querySelector(".habit-h2").innerHTML;
+  console.log(
+    name,
+    state.habits,
+    state.habits.findIndex((e) => e.title === name)
+  );
+  const index = state.habits.findIndex((e) => e.title === name);
+  state.habits.splice(index, 1);
+  console.log(state.habits);
+  setStorage();
 }

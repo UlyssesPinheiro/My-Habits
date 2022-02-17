@@ -11,6 +11,9 @@ const day = `
 const newHabitForm = document.querySelector(".add-goal-box");
 const formBackgroungDiv = document.querySelector(".form-backgroung-div");
 
+const habitsDiv = document.querySelector(".habits-div");
+const habitProgress = document.querySelectorAll(".habit-progress");
+
 function init() {
   clearForm(newHabitForm);
   hideForm(newHabitForm);
@@ -110,6 +113,7 @@ export function createObjects(object = "", targetElement, state) {
   });
   document.querySelector(".habit-progress:last-child").innerHTML = "";
   alignWidthScrollBar();
+  hideEditIcons("all");
 }
 
 export function renderHabits(state) {
@@ -122,7 +126,13 @@ export function renderHabits(state) {
     markup += `
     <div class="habit-name">
       <h2 class="habit-h2">${e.title}</h2>
-      <i class="fas fa-pen icon icon-h2"></i>
+      <i class="fas fa-pen habit-edit icon icon-h2"></i>
+      <div class="habit-edit-div">
+        <i class="fa-solid fa-arrow-left-long habit-edit icon icon-h2"></i>
+        <i class="fas fa-pen habit-rename icon icon-h2"></i>
+        <i class="fas fa-archive icon habit-archive icon icon-h2"></i>
+        <i class="fa-solid fa-trash-can habit-delete icon icon-h2"></i>
+      </div>
     </div>
     <div class="habit-progress">Habit Progress</div>`;
   });
@@ -152,6 +162,13 @@ export function hideForm(form) {
   clearForm(form);
 }
 
+export function idForm(e) {
+  if (e.target) {
+    return e.target.closest("form");
+  }
+  return e.closest("form");
+}
+
 export function clearForm(form) {
   //removes the required warnings
   form
@@ -170,13 +187,6 @@ export function clearForm(form) {
   });
 }
 
-export function idForm(e) {
-  if (e.target) {
-    return e.target.closest("form");
-  }
-  return e.closest("form");
-}
-
 export function checkNewHabitFormInput() {
   const title = document.querySelector(".add-goal-title");
 
@@ -190,17 +200,7 @@ export function checkNewHabitFormInput() {
   }
 }
 
-export function fillCircle(e) {
-  e.innerHTML = `<img src="Icons/goal-complete.svg" alt="goal complete">`;
-}
-
-export function clearCircle(e) {
-  e.innerHTML = "";
-}
-
 export function alignWidthScrollBar() {
-  const habitsDiv = document.querySelector(".habits-div");
-  const habitProgress = document.querySelectorAll(".habit-progress");
   if (
     habitsDiv.scrollWidth <
     +window.getComputedStyle(habitsDiv).getPropertyValue("width").slice(0, -2)
@@ -208,5 +208,21 @@ export function alignWidthScrollBar() {
     habitProgress.forEach((e) => (e.style.paddingLeft = "19px"));
   } else {
     habitProgress.forEach((e) => (e.style.paddingLeft = "0"));
+  }
+}
+
+export function showEditIcons(target) {
+  target.querySelector(".habit-edit-div").style.display = "inline-block";
+  target.querySelector(".habit-edit").style.display = "none";
+}
+
+export function hideEditIcons(target) {
+  if (target === "all") {
+    habitsDiv
+      .querySelectorAll(".habit-edit-div")
+      .forEach((e) => (e.style.display = "none"));
+  } else {
+    target.querySelector(".habit-edit-div").style.display = "none";
+    target.querySelector(".habit-edit").style.display = "inline-block";
   }
 }

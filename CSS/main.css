@@ -198,6 +198,7 @@ a:visited:hover {
 .habit-h2 {
   font-family: var(--roboto-font-family);
   font-size: var(--header2-font-size);
+  margin-right: 10px;
 }
 
 /*============== Habit progress ============== */
