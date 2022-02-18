@@ -45,9 +45,9 @@ export function displayedDays() {
   // console.log(state.amountOfDays);
   for (let i = 0; i < state.amountOfDays; i++) {
     let calcDate = new Date(
-      new Date().setDate(state.currentDate.getDate() + i)
+      new Date().setDate(state.currentDate.getDate() - i)
     );
-    state.displayedDays.push(calcDate);
+    state.displayedDays.unshift(calcDate);
   }
   // console.log(state.displayedDays);
 }

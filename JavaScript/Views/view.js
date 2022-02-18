@@ -14,11 +14,11 @@ const formBackgroungDiv = document.querySelector(".form-backgroung-div");
 const habitsDiv = document.querySelector(".habits-div");
 const habitProgress = document.querySelectorAll(".habit-progress");
 
-function init() {
-  clearForm(newHabitForm);
-  hideForm(newHabitForm);
-}
-init();
+// function init() {
+//   clearForm(newHabitForm);
+//   hideForm(newHabitForm);
+// }
+// init();
 
 export function renderObjects(state, renderOnly = "") {
   if (renderOnly === "day") createObjects(day, `.days`, state);
@@ -117,7 +117,7 @@ export function createObjects(object = "", targetElement, state) {
 }
 
 export function renderHabits(state) {
-  hideForm(newHabitForm);
+  // hideForm(newHabitForm);
   const element = document.querySelector(".habits-div");
 
   let markup = ``;
@@ -139,7 +139,7 @@ export function renderHabits(state) {
 
   element.innerHTML = `
     <div class="habit-name" style="border-bottom: none">
-      <i class="fas fa-plus icon add-habit-icon"></i>
+      <i class="fas fa-plus icon add-new-habit"></i>
     </div>
     <div class="habit-progress" style="border-bottom: none"></div>
   `;
