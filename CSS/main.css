@@ -4,7 +4,7 @@ FONT SIZE SYSTEM (px)
 */
 
 :root {
-  --column-width: 30vw 70vw;
+  --column-width: 40vw 60vw;
   --header-font-size: 2rem;
   --header2-font-size: 1.5rem;
   --header-font-family: "Sansita", sans-serif;
@@ -367,7 +367,16 @@ a:visited:hover {
 
 /* ============ At Media ============== */
 
-@media only screen and (max-width: 850px) {
+@media only screen and (min-width: 1700px) {
+  .grid-container {
+    grid-template-columns: 30vw 70vw;
+  }
+  .habits-div {
+    grid-template-columns: 30vw 70vw;
+  }
+}
+
+@media only screen and (max-width: 1100px) {
   .grid-container {
     grid-template-columns: 1fr;
     grid-template-rows: 10vh 13vh 58vh 10vh 6vh;

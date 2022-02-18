@@ -17,7 +17,7 @@ async function init() {
 init();
 
 document.addEventListener("click", (e) => {
-  const habitForm = document.querySelector(".goal-box");
+  let habitForm = document.querySelector(".goal-box");
 
   if (e.target.closest(".circle")) {
     model.editHabit(e.target.closest(".circle"));
@@ -25,41 +25,63 @@ document.addEventListener("click", (e) => {
   }
 
   if (e.target.closest(".add-new-habit")) {
+    view.createForm();
+    habitForm = document.querySelector(".goal-box");
     view.clearForm(habitForm);
-    view.showForm(habitForm);
+    view.showBackgroundDiv(habitForm);
+  }
+
+  if (e.target.closest(".save-habit")) {
+    const button = e.target.closest(".save-habit");
+    e.preventDefault();
+    if (view.checkNewHabitFormInput()) {
+      if (button.value === "Save Goal") {
+        model.editHabitFormInput();
+        model.editHabitName(model.state.currentHabit);
+        view.renderHabits(model.state);
+      }
+      if (button.value === "Create Goal") {
+        model.getAddNewHabitFormInput();
+      }
+      view.deleteForm(habitForm);
+      view.renderHabits(model.state);
+      view.hideBackgroundDiv();
+    }
+    view.deleteForm(habitForm);
+  }
+
+  if (e.target.closest(".close-window-x")) {
+    view.deleteForm(habitForm);
+    view.hideBackgroundDiv();
+    view.hideEditIcons("all");
   }
 
   if (e.target.closest(".habit-edit")) {
     handleHabitEditOptions(e.target.closest(".habit-name"));
   }
+  if (e.target.closest(".hide-edit")) {
+    view.hideEditIcons("all");
+  }
+
+  if (e.target.closest(".habit-rename")) {
+    const habit =
+      model.state.habits[model.findHabitIndex(e.target.closest(".habit-name"))];
+    model.changeCurrentHabit(habit);
+    view.createForm(habit);
+    habitForm = document.querySelector(".goal-box");
+    view.showBackgroundDiv();
+  }
   if (e.target.closest(".habit-delete")) {
-    console.log(e.target.closest(".habit-name"));
     model.deleteHabit(e.target.closest(".habit-name"));
     view.renderHabits(model.state);
-  }
-
-  if (e.target.closest(".save-habit")) {
-    e.preventDefault();
-    if (view.checkNewHabitFormInput()) {
-      model.getAddNewHabitFormInput();
-      view.hideForm(habitForm);
-      view.renderHabits(model.state);
-    }
-  }
-
-  if (e.target.closest(".close-window-x")) {
-    view.hideForm(habitForm);
   }
 });
 
 export function handleHabitEditOptions(target) {
-  if (!model.state.habitEditOptionsShown) {
-    view.showEditIcons(target);
-    model.state.habitEditOptionsShown = true;
-  } else {
-    view.hideEditIcons(target);
-    model.state.habitEditOptionsShown = false;
-  }
+  const habit = model.state.habits[model.findHabitIndex(target)];
+  model.changeCurrentHabit(habit);
+  view.hideEditIcons("all");
+  view.showEditIcons(target);
 }
 
 document.querySelector(".fa-archive").addEventListener("click", () => {

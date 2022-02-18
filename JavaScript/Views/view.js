@@ -14,9 +14,10 @@ const formBackgroungDiv = document.querySelector(".form-backgroung-div");
 const habitsDiv = document.querySelector(".habits-div");
 const habitProgress = document.querySelectorAll(".habit-progress");
 
+const gridContainer = document.querySelector(".grid-container");
+
 // function init() {
 //   clearForm(newHabitForm);
-//   hideForm(newHabitForm);
 // }
 // init();
 
@@ -117,7 +118,6 @@ export function createObjects(object = "", targetElement, state) {
 }
 
 export function renderHabits(state) {
-  // hideForm(newHabitForm);
   const element = document.querySelector(".habits-div");
 
   let markup = ``;
@@ -128,7 +128,7 @@ export function renderHabits(state) {
       <h2 class="habit-h2">${e.title}</h2>
       <i class="fas fa-pen habit-edit icon icon-h2"></i>
       <div class="habit-edit-div">
-        <i class="fa-solid fa-arrow-left-long habit-edit icon icon-h2"></i>
+        <i class="fa-solid fa-arrow-left-long hide-edit icon icon-h2"></i>
         <i class="fas fa-pen habit-rename icon icon-h2"></i>
         <i class="fas fa-archive icon habit-archive icon icon-h2"></i>
         <i class="fa-solid fa-trash-can habit-delete icon icon-h2"></i>
@@ -147,26 +147,65 @@ export function renderHabits(state) {
   renderObjects(state);
 }
 
-export function showForm(form) {
-  form.style.display = "flex";
+export function createForm(habit) {
+  // console.log(habit);
+
+  // console.log(habit.description);
+  // newForm  ? "New Goal" : "Edit Goal"
+  //
+  const markup = ` <form action="submit" class="goal-box">
+    <p class="add-goal-main-header">${habit ? "Edit Goal" : "New Goal"}</p>
+
+    <p class="form-subheader title-name">Title:</p>
+    <input
+      type="text"
+      name="Title"
+      placeholder="Drink water"
+      ${habit ? `value="${habit.title}"` : ""}
+      class="add-goal-item add-goal-title"
+      required
+    />
+    <p class="form-subheader description-name">Description:</p>
+    <textarea
+      placeholder="Drink 3 cups of water per day"
+      class="add-goal-item add-goal-description"
+      maxlength="200">${habit ? `${habit.description}` : ``}</textarea>
+
+    <div class="partial-complete">
+      <p>Partially complete goal?</p>
+
+      <input type="checkbox" ${
+        habit?.partial ? `checked` : ""
+      } id="partial-goal-checkbox" />
+      <a class="info-help-btn" href="">
+        what is this?
+      </a>
+    </div>
+
+    <input type="submit" class="save-habit" value="${
+      habit ? "Save Goal" : "Create Goal"
+    }" />
+
+    <i class="fas fa-times icon close-window-x"></i>
+  </form>`;
+
+  gridContainer.insertAdjacentHTML("beforeEnd", markup);
+
+  document.querySelector(".goal-box").style.display = "flex";
+}
+
+export function deleteForm(form) {
+  form.remove();
+}
+
+export function showBackgroundDiv() {
   formBackgroungDiv.style.visibility = "visible";
   formBackgroungDiv.style.opacity = "30%";
 }
 
-export function hideForm(form) {
-  form = idForm(form);
-  form.style.display = "none";
+export function hideBackgroundDiv() {
   formBackgroungDiv.style.visibility = "hidden";
   formBackgroungDiv.style.opacity = "0%";
-
-  clearForm(form);
-}
-
-export function idForm(e) {
-  if (e.target) {
-    return e.target.closest("form");
-  }
-  return e.closest("form");
 }
 
 export function clearForm(form) {
@@ -221,6 +260,10 @@ export function hideEditIcons(target) {
     habitsDiv
       .querySelectorAll(".habit-edit-div")
       .forEach((e) => (e.style.display = "none"));
+
+    habitsDiv.querySelectorAll(".habit-edit").forEach((e) => {
+      e.style.display = "inline-block";
+    });
   } else {
     target.querySelector(".habit-edit-div").style.display = "none";
     target.querySelector(".habit-edit").style.display = "inline-block";

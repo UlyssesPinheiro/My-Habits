@@ -6,6 +6,7 @@ export const state = {
   daySizeGap: 20,
   habitEditOptionsShown: false,
 
+  currentHabit: "",
   newHabitFormInput: {},
   habits: [],
 };
@@ -77,6 +78,26 @@ export function pushNewHabitToList() {
   setStorage();
 }
 
+export function editHabitFormInput() {
+  state.newHabitFormInput.title =
+    document.querySelector(".add-goal-title").value;
+  state.newHabitFormInput.description = document.querySelector(
+    ".add-goal-description"
+  ).value;
+
+  state.newHabitFormInput.partial = document.querySelector(
+    "#partial-goal-checkbox"
+  ).checked;
+  console.log(state.newHabitFormInput);
+}
+
+export function editHabitName(habit) {
+  habit.title = state.newHabitFormInput.title;
+  habit.description = state.newHabitFormInput.description;
+  habit.partial = state.newHabitFormInput.partial;
+  console.log(habit);
+}
+
 export function editHabit(e) {
   // console.log(e);
   const index = Array.from(e.parentNode.children).indexOf(e);
@@ -114,14 +135,28 @@ export function setStorage() {
 }
 
 export function deleteHabit(target) {
-  const name = target.querySelector(".habit-h2").innerHTML;
-  console.log(
-    name,
-    state.habits,
-    state.habits.findIndex((e) => e.title === name)
-  );
-  const index = state.habits.findIndex((e) => e.title === name);
+  const index = findHabitIndex(target);
   state.habits.splice(index, 1);
   console.log(state.habits);
+  changeCurrentHabit("");
   setStorage();
+}
+export function changeCurrentHabit(habit) {
+  state.currentHabit = habit;
+}
+
+export function findHabitIndex(target) {
+  let nameFound;
+  // console.log(typeof target);
+  if (typeof target === "object") {
+    nameFound = target?.querySelector(".habit-h2").innerHTML;
+  }
+  if (typeof target === "string") nameFound = target;
+
+  // console.log(
+  //   nameFound,
+  //   state.habits,
+  //   state.habits.findIndex((e) => e.title === nameFound)
+  // );
+  return state.habits.findIndex((e) => e.title === nameFound);
 }
