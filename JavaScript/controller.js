@@ -2,6 +2,7 @@ import * as model from "./model.js";
 import * as view from "./Views/view.js";
 
 const newHabitForm = document.querySelector(".add-goal-box");
+const titleH1 = document.querySelector(".title-h1");
 
 async function init() {
   model.init();
@@ -81,12 +82,39 @@ document.addEventListener("click", (e) => {
     habitForm = document.querySelector(".goal-box");
     view.showBackgroundDiv();
   }
-  if (e.target.closest(".habit-delete")) {
-    model.deleteHabit(e.target.closest(".habit-name"));
+
+  if (e.target.closest(".habit-archive")) {
+    model.archiveHabit(e.target.closest(".habit-name"));
     view.renderHabits(model.state);
   }
-});
 
-document.querySelector(".fa-archive").addEventListener("click", () => {
-  view.renderObjects(model.state, "circle");
+  if (e.target.closest(".habit-unarchive")) {
+    model.unarchiveHabit(e.target.closest(".habit-name"));
+    view.renderHabits(model.state, model.state.showingArchived);
+  }
+
+  if (e.target.closest(".habit-delete")) {
+    if (model.state.showingArchived) {
+      model.deleteHabit(
+        e.target.closest(".habit-name"),
+        model.state.archivedHabits
+      );
+    } else {
+      model.deleteHabit(e.target.closest(".habit-name"));
+    }
+    view.renderHabits(model.state, model.state.showingArchived);
+  }
+  if (e.target.closest(".logo-icon")) {
+    console.log("click");
+    model.state.showingArchived = !model.state.showingArchived;
+    if (model.state.showingArchived) {
+      view.renderHabits(model.state, true);
+      view.changeHabitIconArchived(true);
+      titleH1.textContent = "Archived habits";
+    } else {
+      view.renderHabits(model.state, false);
+      view.changeHabitIconArchived(false);
+      titleH1.textContent = "My habits";
+    }
+  }
 });

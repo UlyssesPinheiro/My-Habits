@@ -173,8 +173,8 @@ a:visited:hover {
 }
 
 /*============== Header ============== */
-.header-icon {
-  height: var(--header-font-size);
+.go-to-main {
+  display: none;
 }
 
 .title-h1 {
@@ -193,6 +193,18 @@ a:visited:hover {
   flex-shrink: 0;
   align-items: center;
   border-bottom: 1px solid var(--gray-color5);
+}
+
+.archive-icon {
+  height: 24px;
+  position: relative;
+  top: 4px;
+}
+.habit-archive:hover {
+  content: url(/Icons/box-archive-solid-hover.svg);
+}
+.habit-unarchive:hover {
+  content: url(/Icons/box-unarchive-solid-hover.svg);
 }
 
 .habit-h2 {

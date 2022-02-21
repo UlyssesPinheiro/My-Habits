@@ -9,14 +9,20 @@ export const state = {
   currentHabit: "",
   newHabitFormInput: {},
   habits: [],
+  archivedHabits: [],
+
+  showingArchived: false,
 };
 
 export function init() {
   currentDate();
   calculateAmountOfDays();
   displayedDays();
-  if (JSON.parse(localStorage.getItem("storageHabits"))) {
-    state.habits = JSON.parse(localStorage.getItem("storageHabits"));
+  if (JSON.parse(localStorage.getItem("habits"))) {
+    state.habits = JSON.parse(localStorage.getItem("habits"));
+  }
+  if (JSON.parse(localStorage.getItem("archivedHabits"))) {
+    state.archivedHabits = JSON.parse(localStorage.getItem("archivedHabits"));
   }
 }
 
@@ -131,22 +137,40 @@ export function editHabit(e) {
 }
 
 export function setStorage() {
-  localStorage.setItem("storageHabits", JSON.stringify(state.habits));
+  localStorage.setItem("habits", JSON.stringify(state.habits));
+  localStorage.setItem("archivedHabits", JSON.stringify(state.archivedHabits));
 }
 
-export function deleteHabit(target) {
+export function deleteHabit(target, habitList = state.habits) {
   const index = findHabitIndex(target);
-  state.habits.splice(index, 1);
+  habitList.splice(index, 1);
 
   changeCurrentHabit("");
   setStorage();
 }
+
+export function archiveHabit(target) {
+  console.log(target);
+  const index = findHabitIndex(target);
+  state.archivedHabits.push(state.habits[index]);
+  state.habits.splice(index, 1);
+  changeCurrentHabit("");
+  setStorage();
+}
+
+export function unarchiveHabit(target) {
+  const index = findHabitIndex(target, state.archivedHabits);
+  state.habits.push(state.archivedHabits[index]);
+  state.archivedHabits.splice(index, 1);
+  changeCurrentHabit("");
+  setStorage();
+}
+
 export function changeCurrentHabit(habit) {
   state.currentHabit = habit;
 }
 
-export function findHabitIndex(target) {
+export function findHabitIndex(target, habitList = state.habits) {
   const nameFound = `${target?.querySelector(".habit-h2").innerHTML}`;
-
-  return state.habits.findIndex((e) => e.title === nameFound);
+  return habitList.findIndex((e) => e.title === nameFound);
 }

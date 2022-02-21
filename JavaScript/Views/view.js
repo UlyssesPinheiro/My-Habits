@@ -21,10 +21,11 @@ const gridContainer = document.querySelector(".grid-container");
 // }
 // init();
 
-export function renderObjects(state, renderOnly = "") {
-  if (renderOnly === "day") createObjects(day, `.days`, state);
-  if (renderOnly === "circle") createObjects(circle, `.habit-progress`, state);
-  if (renderOnly === "note") createObjects(note, `.notes`, state);
+export function renderObjects(state, renderOnly = "", archived) {
+  if (renderOnly === "day") createObjects(day, `.days`, state, archived);
+  if (renderOnly === "circle")
+    createObjects(circle, `.habit-progress`, state, archived);
+  if (renderOnly === "note") createObjects(note, `.notes`, state, archived);
 
   if (renderOnly === "") {
     createObjects(day, `.days`, state);
@@ -33,7 +34,20 @@ export function renderObjects(state, renderOnly = "") {
   }
 }
 
-export function createObjects(object = "", targetElement, state) {
+export function createObjects(
+  object = "",
+  targetElement,
+  state,
+  archived = false
+) {
+  let habitList;
+  if (archived) {
+    habitList = state.archivedHabits;
+  } else {
+    habitList = state.habits;
+  }
+
+  // console.log(habitList);
   const { amountOfDays, displayedDays } = state;
 
   const habitProgress = document.querySelectorAll(targetElement);
@@ -57,7 +71,7 @@ export function createObjects(object = "", targetElement, state) {
       }
     }
 
-    if (object === circle && state.habits[habitProgressIndex]) {
+    if (object === circle && habitList[habitProgressIndex]) {
       markup = ``;
       // let filledDays = [];
       //generate markup with empty and filled days
@@ -70,15 +84,15 @@ export function createObjects(object = "", targetElement, state) {
         const curDate = daysDiv[i].getAttribute("date");
 
         //   habitProgressIndex,
-        //   state.habits[habitProgressIndex].data,
+        //   habitList[habitProgressIndex].data,
         //   curDate,
-        //   state.habits
+        //   habitList
         // );
 
-        if (state.habits[habitProgressIndex].data.length) {
-          // test if the curDate is on the state.habits[habitProgressIndex].data
+        if (habitList[habitProgressIndex].data.length) {
+          // test if the curDate is on the habitList[habitProgressIndex].data
 
-          const x = state.habits[habitProgressIndex].data.findIndex((habit) => {
+          const x = habitList[habitProgressIndex].data.findIndex((habit) => {
             if (habit[1]) return habit[0] === curDate; //if habit is set to true
           });
 
@@ -110,20 +124,52 @@ export function createObjects(object = "", targetElement, state) {
   hideEditIcons("all");
 }
 
-export function renderHabits(state) {
+export function renderHabits(state, archived = false) {
+  let habitList;
+
+  console.log(habitList);
+  if (archived) {
+    habitList = state.archivedHabits;
+  } else {
+    habitList = state.habits;
+  }
+  console.log(archived, habitList);
+
   const element = document.querySelector(".habits-div");
 
   let markup = ``;
 
-  state.habits.forEach((e) => {
+  if (!habitList) return;
+  habitList.forEach((e) => {
+    if (!e) return;
+
     markup += `
     <div class="habit-name">
       <h2 class="habit-h2">${e.title}</h2>
       <i class="fas fa-pen habit-edit icon icon-h2"></i>
       <div class="habit-edit-div">
         <i class="fa-solid fa-arrow-left-long hide-edit icon icon-h2"></i>
-        <i class="fas fa-pen habit-rename icon icon-h2"></i>
-        <i class="fas fa-archive icon habit-archive icon icon-h2"></i>
+        
+
+        ${
+          archived
+            ? `
+            <img
+            class="habit-unarchive archive-icon"
+            src="/Icons/box-unarchive-solid.svg"
+            alt=""
+            />
+            `
+            : `
+            <i class="fas fa-pen habit-rename icon icon-h2"></i>
+            <img
+            class="habit-archive archive-icon"
+            src="/Icons/box-archive-solid.svg"
+            alt=""
+          />`
+        }
+
+
         <i class="fa-solid fa-trash-can habit-delete icon icon-h2"></i>
       </div>
     </div>
@@ -137,7 +183,7 @@ export function renderHabits(state) {
     <div class="habit-progress" style="border-bottom: none"></div>
   `;
   element.insertAdjacentHTML("afterbegin", markup);
-  renderObjects(state, "circle");
+  renderObjects(state, "circle", archived);
 }
 
 export function createForm(habit) {
@@ -257,5 +303,16 @@ export function hideEditIcons(target) {
   } else {
     target.querySelector(".habit-edit-div").style.display = "none";
     target.querySelector(".habit-edit").style.display = "inline-block";
+  }
+}
+
+export function changeHabitIconArchived(archived) {
+  if (archived) {
+    document.querySelector(".go-to-archived").style.display = "none";
+    document.querySelector(".go-to-main").style.display = "inline-block";
+  }
+  if (!archived) {
+    document.querySelector(".go-to-main").style.display = "none";
+    document.querySelector(".go-to-archived").style.display = "inline-block";
   }
 }
