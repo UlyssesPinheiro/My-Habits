@@ -35,7 +35,6 @@ export function renderObjects(state, renderOnly = "") {
 
 export function createObjects(object = "", targetElement, state) {
   const { amountOfDays, displayedDays } = state;
-  // console.log(displayedDays[0].getDate());
 
   const habitProgress = document.querySelectorAll(targetElement);
   [...habitProgress].forEach((element, habitProgressIndex) => {
@@ -70,7 +69,6 @@ export function createObjects(object = "", targetElement, state) {
         // let currDateIsFilled = false;
         const curDate = daysDiv[i].getAttribute("date");
 
-        // console.log(
         //   habitProgressIndex,
         //   state.habits[habitProgressIndex].data,
         //   curDate,
@@ -83,7 +81,6 @@ export function createObjects(object = "", targetElement, state) {
           const x = state.habits[habitProgressIndex].data.findIndex((habit) => {
             if (habit[1]) return habit[0] === curDate; //if habit is set to true
           });
-          // console.log(x);
 
           markup +=
             x !== -1
@@ -103,14 +100,10 @@ export function createObjects(object = "", targetElement, state) {
     element.innerHTML = "";
 
     // if (object === circle) {
-    //   console.log("habitProgressIndex: ", habitProgressIndex);
-    //   console.log(element);
-    //   console.log("innerHTML: ", element.innerHTML);
-    //   console.log("Markup: ", markup);
+
     // }
 
     element.innerHTML = `${markup}`;
-    // if (object === circle) console.log("innerHTML after: ", element.innerHTML);
   });
   document.querySelector(".habit-progress:last-child").innerHTML = "";
   alignWidthScrollBar();
@@ -144,13 +137,10 @@ export function renderHabits(state) {
     <div class="habit-progress" style="border-bottom: none"></div>
   `;
   element.insertAdjacentHTML("afterbegin", markup);
-  renderObjects(state);
+  renderObjects(state, "circle");
 }
 
 export function createForm(habit) {
-  // console.log(habit);
-
-  // console.log(habit.description);
   // newForm  ? "New Goal" : "Edit Goal"
   //
   const markup = ` <form action="submit" class="goal-box">

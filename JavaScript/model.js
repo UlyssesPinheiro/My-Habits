@@ -33,24 +33,21 @@ export function calculateAmountOfDays() {
   state.amountOfDays = Math.floor(
     width / (state.daySizePixels + state.daySizeGap)
   );
-  // console.log("state day size pixels:", state.daySizePixels);
 }
 
 export function currentDate() {
   state.currentDate = new Date();
-  // console.log(state.currentDate);
 }
 
 export function displayedDays() {
   state.displayedDays = [];
-  // console.log(state.amountOfDays);
+
   for (let i = 0; i < state.amountOfDays; i++) {
     let calcDate = new Date(
       new Date().setDate(state.currentDate.getDate() - i)
     );
     state.displayedDays.unshift(calcDate);
   }
-  // console.log(state.displayedDays);
 }
 
 export function getAddNewHabitFormInput() {
@@ -65,7 +62,6 @@ export function getAddNewHabitFormInput() {
   ).checked;
 
   state.newHabitFormInput.data = [];
-  // console.log(state.newHabitFormInput);
 
   pushNewHabitToList();
 }
@@ -73,8 +69,7 @@ export function getAddNewHabitFormInput() {
 export function pushNewHabitToList() {
   const newObj = { ...state.newHabitFormInput };
   state.habits.unshift(newObj);
-  // console.log(state.newHabitFormInput);
-  // console.log(state.habits);
+
   setStorage();
 }
 
@@ -88,18 +83,24 @@ export function editHabitFormInput() {
   state.newHabitFormInput.partial = document.querySelector(
     "#partial-goal-checkbox"
   ).checked;
-  console.log(state.newHabitFormInput);
 }
 
 export function editHabitName(habit) {
-  habit.title = state.newHabitFormInput.title;
-  habit.description = state.newHabitFormInput.description;
-  habit.partial = state.newHabitFormInput.partial;
-  console.log(habit);
+  const index = findHabitIndex(habit); //must be object in DOM, not the title
+
+  state.habits[index].title = state.newHabitFormInput.title;
+  state.habits[index].description = state.newHabitFormInput.description;
+  state.habits[index].partial = state.newHabitFormInput.partial;
+
+  //   typeof state.newHabitFormInput.title,
+  //   typeof state.newHabitFormInput.description,
+  //   typeof state.newHabitFormInput.partial
+  // );
+
+  return state;
 }
 
 export function editHabit(e) {
-  // console.log(e);
   const index = Array.from(e.parentNode.children).indexOf(e);
 
   const days = document.querySelector(".days");
@@ -116,7 +117,6 @@ export function editHabit(e) {
     state.habits[state.habits.findIndex((e) => e.title === habit)];
 
   const dayAlreadyExists = currentHabit.data.findIndex((e) => {
-    // console.log(e[0]);
     return e[0] === currentTime;
   });
 
@@ -137,7 +137,7 @@ export function setStorage() {
 export function deleteHabit(target) {
   const index = findHabitIndex(target);
   state.habits.splice(index, 1);
-  console.log(state.habits);
+
   changeCurrentHabit("");
   setStorage();
 }
@@ -146,17 +146,7 @@ export function changeCurrentHabit(habit) {
 }
 
 export function findHabitIndex(target) {
-  let nameFound;
-  // console.log(typeof target);
-  if (typeof target === "object") {
-    nameFound = target?.querySelector(".habit-h2").innerHTML;
-  }
-  if (typeof target === "string") nameFound = target;
+  const nameFound = `${target?.querySelector(".habit-h2").innerHTML}`;
 
-  // console.log(
-  //   nameFound,
-  //   state.habits,
-  //   state.habits.findIndex((e) => e.title === nameFound)
-  // );
   return state.habits.findIndex((e) => e.title === nameFound);
 }

@@ -37,8 +37,12 @@ document.addEventListener("click", (e) => {
     if (view.checkNewHabitFormInput()) {
       if (button.value === "Save Goal") {
         model.editHabitFormInput();
+
+        // O PROBLEMA ESTÁ AQUI
         model.editHabitName(model.state.currentHabit);
+
         view.renderHabits(model.state);
+        model.setStorage();
       }
       if (button.value === "Create Goal") {
         model.getAddNewHabitFormInput();
@@ -57,7 +61,13 @@ document.addEventListener("click", (e) => {
   }
 
   if (e.target.closest(".habit-edit")) {
-    handleHabitEditOptions(e.target.closest(".habit-name"));
+    // const habit =
+    const habit =
+      model.state.habits[model.findHabitIndex(e.target.closest(".habit-name"))];
+
+    model.changeCurrentHabit(e.target.closest(".habit-name"));
+    view.hideEditIcons("all");
+    view.showEditIcons(e.target.closest(".habit-name"));
   }
   if (e.target.closest(".hide-edit")) {
     view.hideEditIcons("all");
@@ -66,7 +76,7 @@ document.addEventListener("click", (e) => {
   if (e.target.closest(".habit-rename")) {
     const habit =
       model.state.habits[model.findHabitIndex(e.target.closest(".habit-name"))];
-    model.changeCurrentHabit(habit);
+
     view.createForm(habit);
     habitForm = document.querySelector(".goal-box");
     view.showBackgroundDiv();
@@ -76,13 +86,6 @@ document.addEventListener("click", (e) => {
     view.renderHabits(model.state);
   }
 });
-
-export function handleHabitEditOptions(target) {
-  const habit = model.state.habits[model.findHabitIndex(target)];
-  model.changeCurrentHabit(habit);
-  view.hideEditIcons("all");
-  view.showEditIcons(target);
-}
 
 document.querySelector(".fa-archive").addEventListener("click", () => {
   view.renderObjects(model.state, "circle");
