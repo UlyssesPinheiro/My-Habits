@@ -155,16 +155,16 @@ export function renderHabits(state, archived = false) {
           archived
             ? `
             <img
-            class="habit-unarchive archive-icon"
-            src="/Icons/box-unarchive-solid.svg"
+            class="habit-unarchive archive-icon icon"
+            src="Icons/box-unarchive-solid.svg"
             alt=""
             />
             `
             : `
             <i class="fas fa-pen habit-rename icon icon-h2"></i>
             <img
-            class="habit-archive archive-icon"
-            src="/Icons/box-archive-solid.svg"
+            class="habit-archive archive-icon icon"
+            src="Icons/box-archive-solid.svg"
             alt=""
           />`
         }
@@ -287,7 +287,7 @@ export function alignWidthScrollBar() {
 }
 
 export function showEditIcons(target) {
-  target.querySelector(".habit-edit-div").style.display = "inline-block";
+  target.querySelector(".habit-edit-div").style.display = "flex";
   target.querySelector(".habit-edit").style.display = "none";
 }
 

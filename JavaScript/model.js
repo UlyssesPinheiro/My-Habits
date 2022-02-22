@@ -107,6 +107,14 @@ export function editHabitName(habit) {
 }
 
 export function editHabit(e) {
+  let habitList;
+  if (!state.showingArchived) {
+    habitList = state.habits;
+  }
+  if (state.showingArchived) {
+    habitList = state.archivedHabits;
+  }
+
   const index = Array.from(e.parentNode.children).indexOf(e);
 
   const days = document.querySelector(".days");
@@ -119,8 +127,7 @@ export function editHabit(e) {
     .closest(".habit-progress")
     .previousElementSibling.querySelector("h2").innerHTML;
 
-  const currentHabit =
-    state.habits[state.habits.findIndex((e) => e.title === habit)];
+  const currentHabit = habitList[habitList.findIndex((e) => e.title === habit)];
 
   const dayAlreadyExists = currentHabit.data.findIndex((e) => {
     return e[0] === currentTime;
@@ -154,14 +161,18 @@ export function archiveHabit(target) {
   const index = findHabitIndex(target);
   state.archivedHabits.push(state.habits[index]);
   state.habits.splice(index, 1);
+  console.log(state.archivedHabits);
   changeCurrentHabit("");
   setStorage();
 }
 
 export function unarchiveHabit(target) {
+  console.log("unarchive", target);
+
   const index = findHabitIndex(target, state.archivedHabits);
   state.habits.push(state.archivedHabits[index]);
   state.archivedHabits.splice(index, 1);
+  console.log(state.habits);
   changeCurrentHabit("");
   setStorage();
 }
