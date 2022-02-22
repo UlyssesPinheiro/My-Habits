@@ -20,6 +20,7 @@ init();
 
 document.addEventListener("click", (e) => {
   console.log(e.target);
+  if (e.target.style.display === "none") return;
   let habitForm = document.querySelector(".goal-box");
 
   if (e.target.closest(".save-habit")) {
@@ -65,11 +66,26 @@ document.addEventListener("click", (e) => {
       view.changeHabitIconArchived(false);
       titleH1.textContent = "My habits";
     }
+    view.hideAddNewHabit(model.state.showingArchived);
     return;
+  }
+  if (e.target.closest(".delete-confirm")) {
+    if (model.state.showingArchived) {
+      model.deleteHabit(
+        e.target.closest(".habit-name"),
+        model.state.archivedHabits
+      );
+    } else {
+      model.deleteHabit(e.target.closest(".habit-name"));
+    }
+    view.renderHabits(model.state, model.state.showingArchived);
+    view.deleteForm(e.target.closest("form"));
   }
 });
 
 habitsDiv.addEventListener("click", (e) => {
+  console.log(e.target);
+  if (e.target.style.display === "none") return;
   let habitForm = document.querySelector(".goal-box");
 
   if (e.target.closest(".circle")) {
@@ -130,15 +146,14 @@ habitsDiv.addEventListener("click", (e) => {
   }
 
   if (e.target.closest(".habit-delete")) {
-    if (model.state.showingArchived) {
-      model.deleteHabit(
-        e.target.closest(".habit-name"),
-        model.state.archivedHabits
-      );
-    } else {
-      model.deleteHabit(e.target.closest(".habit-name"));
-    }
-    view.renderHabits(model.state, model.state.showingArchived);
+    const habitList = model.state.showingArchived
+      ? model.state.archivedHabits
+      : model.state.habits;
+    const habit =
+      habitList[
+        model.findHabitIndex(e.target.closest(".habit-name"), habitList)
+      ];
+    view.confirmDeletePopUp(habit);
     return;
   }
 });

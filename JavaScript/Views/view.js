@@ -186,6 +186,21 @@ export function renderHabits(state, archived = false) {
   renderObjects(state, "circle", archived);
 }
 
+export function confirmDeletePopUp(habit) {
+  const markup = `
+  <form class="goal-box">
+    <p class="add-goal-main-header">Delete habit?</p>
+    <p>${habit.title}</p>
+    <i class="fas fa-times icon close-window-x"></i>
+    <button class="form-button delete-confirm">Confirm deletion</button>
+  </form>
+  `;
+  showBackgroundDiv();
+  gridContainer.insertAdjacentHTML("beforeEnd", markup);
+
+  document.querySelector(".goal-box").style.display = "flex";
+}
+
 export function createForm(habit) {
   // newForm  ? "New Goal" : "Edit Goal"
   //
@@ -218,7 +233,7 @@ export function createForm(habit) {
       </a>
     </div>
 
-    <input type="submit" class="save-habit" value="${
+    <input type="submit" class="save-habit form-button" value="${
       habit ? "Save Goal" : "Create Goal"
     }" />
 
@@ -232,6 +247,7 @@ export function createForm(habit) {
 
 export function deleteForm(form) {
   form.remove();
+  hideBackgroundDiv();
 }
 
 export function showBackgroundDiv() {
@@ -314,5 +330,14 @@ export function changeHabitIconArchived(archived) {
   if (!archived) {
     document.querySelector(".go-to-main").style.display = "none";
     document.querySelector(".go-to-archived").style.display = "inline-block";
+  }
+}
+
+export function hideAddNewHabit(showingArchived) {
+  if (showingArchived) {
+    document.querySelector(".add-new-habit").style.display = "none";
+  }
+  if (!showingArchived) {
+    document.querySelector(".add-new-habit").style.display = "";
   }
 }
