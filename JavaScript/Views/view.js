@@ -73,21 +73,13 @@ export function createObjects(
 
     if (object === circle && habitList[habitProgressIndex]) {
       markup = ``;
-      // let filledDays = [];
       //generate markup with empty and filled days
       //change the object value to the current circle (filled or unfilled)
 
       const daysDiv = document.querySelectorAll(".day");
 
       for (let i = 0; i < amountOfDays; i++) {
-        // let currDateIsFilled = false;
         const curDate = daysDiv[i].getAttribute("date");
-
-        //   habitProgressIndex,
-        //   habitList[habitProgressIndex].data,
-        //   curDate,
-        //   habitList
-        // );
 
         if (habitList[habitProgressIndex].data.length) {
           // test if the curDate is on the habitList[habitProgressIndex].data
@@ -98,7 +90,9 @@ export function createObjects(
 
           markup +=
             x !== -1
-              ? `<div class="circle view-icon"><img src="Icons/goal-complete.svg" alt="goal complete"></div>`
+              ? `<div class="circle view-icon"><img src="Icons/goal-complete${
+                  archived ? "-archived" : ""
+                }.svg" alt="goal complete"></div>`
               : `<div class="circle view-icon"></div>`;
         } else {
           markup += `<div class="circle view-icon"></div>`;
