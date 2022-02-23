@@ -175,6 +175,8 @@ habitsDiv.addEventListener("click", (e) => {
   }
 });
 
-document.querySelector(".credits-link").addEventListener(".click", (e) => {
+document.querySelector(".credits-link").addEventListener("click", (e) => {
   e.preventDefault();
+  view.showCredits();
+  view.showBackgroundDiv();
 });

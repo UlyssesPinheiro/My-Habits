@@ -292,8 +292,45 @@ export function hideAboutPartialGoals() {
 }
 
 export function showCredits() {
+  console.log("working");
   const markup = `
+  <div class="credits-form form-gap goal-box">
+  <div class="form-title-container">
+    <p class="add-goal-main-header">Links</p>
+    <i class="fas fa-times icon close-window-x"></i>
+  </div>
+
+  <p class="form-text">
+    My design process:
+    <a
+      target="_blank"
+      href="https://www.figma.com/file/68UxdsPjOoxdhR9wYzRiq9/Habit-tracker?node-id=0%3A1"
+      >Figma Wireframe</a
+    >
+  </p>
+  <p class="form-text">
+  Code stored on:
+  <a target="_blank" href="https://github.com/UlyssesPinheiro/my-habits"
+    >GitHub</a
+  >
+  </p>
+  <p class="add-goal-main-header">Credits</p>
+  <p class="form-text">
+    Original idea from:
+    <a target="_blank" href="https://www.youtube.com/watch?v=fSwpe8r50_o"
+      >CGP Grey</a
+    >
+  </p>
+  <p class="form-text">
+    Icons created by:
+    <a target="_blank" href="https://fontawesome.com/">Font Awesome</a>
+  </p>
+  </div>
+
   `;
+  gridContainer.insertAdjacentHTML("beforeEnd", markup);
+
+  document.querySelector(".goal-box").style.display = "flex";
 }
 
 export function deleteForm(form) {

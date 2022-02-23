@@ -365,6 +365,10 @@ a:visited:hover {
   background-color: #ffe8e8;
 }
 
+.form-gap {
+  gap: 15px;
+}
+
 /* ===========Background Form Div ============= */
 
 .form-backgroung-div {
