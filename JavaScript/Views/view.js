@@ -143,32 +143,30 @@ export function renderHabits(state, archived = false) {
       <i class="fas fa-pen habit-edit icon icon-h2"></i>
       <div class="habit-edit-div">
         <i class="fa-solid fa-arrow-left-long hide-edit icon icon-h2"></i>
-        
+
 
         ${
           archived
             ? `
-            <img
-            class="habit-unarchive archive-icon icon"
-            src="Icons/box-unarchive-solid.svg"
-            alt=""
-            />
+            <i class="fa-solid fa-arrow-up-right-from-square habit-unarchive icon"></i>
             `
             : `
             <i class="fas fa-pen habit-rename icon icon-h2"></i>
-            <img
-            class="habit-archive archive-icon icon"
-            src="Icons/box-archive-solid.svg"
-            alt=""
-          />`
+            <i class="fas fa-archive habit-archive icon icon-h2"></i>`
         }
-
-
         <i class="fa-solid fa-trash-can habit-delete icon icon-h2"></i>
       </div>
     </div>
     <div class="habit-progress">Habit Progress</div>`;
   });
+  // <img
+  // class="habit-unarchive archive-icon icon"
+  // src="Icons/box-unarchive-solid.svg"
+  // alt=""
+  // />
+  //<i class="fa-solid fa-arrow-up-right-from-square"></i>
+  //<i class="fas fa-pen habit-rename icon icon-h2"></i>
+  //<i class="fa-solid fa-trash-can habit-delete icon icon-h2"></i>
 
   element.innerHTML = `
     <div class="habit-name" style="border-bottom: none">
@@ -206,6 +204,7 @@ export function createForm(habit) {
       type="text"
       name="Title"
       placeholder="Drink water"
+      maxlength="35"
       ${habit ? `value="${habit.title}"` : ""}
       class="add-goal-item add-goal-title"
       required

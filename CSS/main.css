@@ -195,23 +195,14 @@ a:visited:hover {
   border-bottom: 1px solid var(--gray-color5);
 }
 
-.archive-icon {
-  height: 24px;
-  position: relative;
-  /* bottom: -10px; */
+.habit-unarchive {
+  font-size: 22px;
 }
 
 .habit-edit-div {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.habit-archive:hover {
-  content: url(/Icons/box-archive-solid-hover.svg);
-}
-.habit-unarchive:hover {
-  content: url(/Icons/box-unarchive-solid-hover.svg);
 }
 
 .habit-h2 {

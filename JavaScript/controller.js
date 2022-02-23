@@ -92,6 +92,8 @@ habitsDiv.addEventListener("click", (e) => {
     console.log("circle");
     model.editHabit(e.target.closest(".circle"));
     view.renderHabits(model.state, model.state.showingArchived);
+    console.log(model.state.showingArchived);
+    view.hideAddNewHabit(model.state.showingArchived);
     return;
   }
 
