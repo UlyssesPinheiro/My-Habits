@@ -275,7 +275,7 @@ a:visited:hover {
 }
 
 /*============== Credits ============== */
-.credits-font {
+.credits-text {
   color: var(--gray-color6);
   font-size: 12px;
 }
@@ -378,6 +378,35 @@ a:visited:hover {
   z-index: 1;
   transition: all 400ms;
 }
+
+/* =========Partial Goals ================ */
+.about-partial-goals {
+  gap: 20px;
+  /* will change to flex */
+  display: none;
+}
+.form-title-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+.go-back {
+  margin: 0;
+}
+.form-text {
+  font-size: 16px;
+  color: var(--gray-color7);
+}
+.partial-circle-examples {
+  display: flex;
+  align-items: center;
+}
+/* .center-align-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+} */
 
 /* ============ At Media ============== */
 

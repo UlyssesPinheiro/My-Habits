@@ -196,7 +196,7 @@ export function confirmDeletePopUp(habit) {
 export function createForm(habit) {
   // newForm  ? "New Goal" : "Edit Goal"
   //
-  const markup = ` <form action="submit" class="goal-box">
+  const markup = ` <form action="submit" class="add-goal-box goal-box">
     <p class="add-goal-main-header">${habit ? "Edit Goal" : "New Goal"}</p>
 
     <p class="form-subheader title-name">Title:</p>
@@ -236,6 +236,64 @@ export function createForm(habit) {
   gridContainer.insertAdjacentHTML("beforeEnd", markup);
 
   document.querySelector(".goal-box").style.display = "flex";
+}
+
+export function showAboutPartialGoals() {
+  document.querySelector(".add-goal-box").style.display = "none";
+
+  const aboutPartialGoals = `
+  <div class="about-partial-goals goal-box">
+          <div class="form-title-container">
+            <p class="add-goal-main-header">About partial goals</p>
+            <i class="fas fa-times icon icon-h2 go-back"></i>
+            </div>
+          <p>Let's use an example:</p>
+          <p class="form-text">
+            Say the current goal is to study 2 hours every day. 
+            Some days we won't be able to that much, or may feel demotivated to complete
+            the habit that day. <br />
+            <br />
+            For those days, we can do at least a very small version of the habit
+            we are trying to keep. Like, study for 30 minutes. This way we can fit
+            into that busy day, and don't cease continuity.
+          </p>
+          
+          <p>The partial habits look like this:</p>
+          <div class="circle view-icon">
+            <img src="Icons/goal-partial.svg" alt="goal complete" />
+          </div>
+          <p class="form-text"> <span>
+            A half filled circle.</span> <br />
+            <br />
+            You will need to tap twice for it to become a fully filled circle
+            (When you have studied the full 2 hours, for example).
+          </p>
+          <div class="partial-circle-examples">
+            <div class="circle view-icon"></div>
+            <i class="fa-solid fa-arrow-right-long icon icon-h2"></i>
+            <div class="circle view-icon">
+              <img src="Icons/goal-partial.svg" alt="goal complete" />
+            </div>
+            <i class="fa-solid fa-arrow-right-long icon icon-h2"></i>
+  
+            <div class="circle view-icon">
+              <img src="Icons/goal-complete.svg" alt="goal complete" />
+            </div>
+          </div>
+        </div>
+  `;
+  gridContainer.insertAdjacentHTML("beforeEnd", aboutPartialGoals);
+  document.querySelector(".about-partial-goals").style.display = "flex";
+}
+
+export function hideAboutPartialGoals() {
+  document.querySelector(".about-partial-goals").remove();
+  document.querySelector(".add-goal-box").style.display = "flex";
+}
+
+export function showCredits() {
+  const markup = `
+  `;
 }
 
 export function deleteForm(form) {

@@ -24,6 +24,8 @@ document.addEventListener("click", (e) => {
   let habitForm = document.querySelector(".goal-box");
 
   if (e.target.closest(".save-habit")) {
+    e.preventDefault();
+
     const button = e.target.closest(".save-habit");
     e.preventDefault();
     if (view.checkNewHabitFormInput()) {
@@ -70,6 +72,8 @@ document.addEventListener("click", (e) => {
     return;
   }
   if (e.target.closest(".delete-confirm")) {
+    e.preventDefault();
+
     if (model.state.showingArchived) {
       model.deleteHabit(
         e.target.closest(".habit-name"),
@@ -80,6 +84,17 @@ document.addEventListener("click", (e) => {
     }
     view.renderHabits(model.state, model.state.showingArchived);
     view.deleteForm(e.target.closest("form"));
+  }
+
+  if (e.target.closest(".info-help-btn")) {
+    e.preventDefault();
+
+    view.showAboutPartialGoals();
+    view.showBackgroundDiv();
+  }
+  if (e.target.closest(".go-back")) {
+    view.hideAboutPartialGoals();
+    view.showBackgroundDiv();
   }
 });
 
@@ -158,4 +173,8 @@ habitsDiv.addEventListener("click", (e) => {
     view.confirmDeletePopUp(habit);
     return;
   }
+});
+
+document.querySelector(".credits-link").addEventListener(".click", (e) => {
+  e.preventDefault();
 });
