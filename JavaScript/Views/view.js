@@ -182,7 +182,7 @@ export function confirmDeletePopUp(habit) {
   const markup = `
   <form class="goal-box">
     <p class="add-goal-main-header">Delete habit?</p>
-    <p>${habit.title}</p>
+    <p>"${habit.title}"</p>
     <i class="fas fa-times icon close-window-x"></i>
     <button class="form-button delete-confirm">Confirm deletion</button>
   </form>
@@ -254,7 +254,7 @@ export function showAboutPartialGoals() {
             the habit that day. <br />
             <br />
             For those days, we can do at least a very small version of the habit
-            we are trying to keep. Like, study for 30 minutes. This way we can fit
+            we are trying to keep. Like, study for 20 minutes. This way we can fit
             into that busy day, and don't cease continuity.
           </p>
           
