@@ -8,18 +8,18 @@ export const state = {
 
   currentHabit: "",
   newHabitFormInput: {},
+  newNoteFormInput: {},
   habits: [],
   archivedHabits: [],
-  notes: [
-    {
-      noteTitle: "Note Title",
-      text: "this is a note text",
-      date: "Thu Feb 17 2022",
-    },
-  ],
+  notes: [],
 
   showingArchived: false,
 };
+// Note format:
+// {
+//   text: "this is a note text",
+//   date: "Wed Feb 23 2022",
+// },
 
 export function init() {
   currentDate();
@@ -30,6 +30,9 @@ export function init() {
   }
   if (JSON.parse(localStorage.getItem("archivedHabits"))) {
     state.archivedHabits = JSON.parse(localStorage.getItem("archivedHabits"));
+  }
+  if (JSON.parse(localStorage.getItem("notes"))) {
+    state.notes = JSON.parse(localStorage.getItem("notes"));
   }
 }
 
@@ -98,6 +101,32 @@ export function editHabitFormInput() {
   ).checked;
 }
 
+export function getNoteFormInput() {
+  state.newNoteFormInput.text = document.querySelector(
+    ".note-form-description"
+  ).value;
+
+  state.newNoteFormInput.date = document
+    .querySelector(".form-main-header")
+    .innerHTML.slice(-15);
+}
+
+export function pushNewNoteToList() {
+  const newObj = { ...state.newNoteFormInput };
+  state.notes.unshift(newObj);
+
+  setStorage();
+}
+
+export function saveNote() {
+  const index = findNoteIndex(state.newNoteFormInput.date);
+
+  state.notes[index].text = `${state.newNoteFormInput.text}`;
+  state.notes[index].date = `${state.newNoteFormInput.date}`;
+
+  setStorage();
+}
+
 export function editHabitName(habit) {
   const index = findHabitIndex(habit); //must be object in DOM, not the title
 
@@ -122,12 +151,7 @@ export function editHabit(e) {
     habitList = state.archivedHabits;
   }
 
-  const index = Array.from(e.parentNode.children).indexOf(e);
-
-  const days = document.querySelector(".days");
-  const currentDay = Array.from(days.children)[index];
-
-  const currentTime = currentDay.getAttribute("date");
+  const currentTime = findCurrentDate(e);
 
   //find which habit is the target
   const habit = e
@@ -150,15 +174,16 @@ export function editHabit(e) {
   setStorage();
 }
 
-export function getNoteFormInput() {}
-
-export function findNote(e) {
+export function findCurrentDate(e) {
   const index = Array.from(e.parentNode.children).indexOf(e);
   const days = document.querySelector(".days");
   const currentDay = Array.from(days.children)[index];
 
-  const currentTime = currentDay.getAttribute("date");
+  return currentDay.getAttribute("date");
+}
 
+export function findNote(e) {
+  const currentTime = findCurrentDate(e);
   //find which Note is the target
   const noteIndex = state.notes.findIndex((note) => note.date === currentTime);
 
@@ -168,6 +193,7 @@ export function findNote(e) {
 export function setStorage() {
   localStorage.setItem("habits", JSON.stringify(state.habits));
   localStorage.setItem("archivedHabits", JSON.stringify(state.archivedHabits));
+  localStorage.setItem("notes", JSON.stringify(state.notes));
 }
 
 export function deleteHabit(target, habitList = state.habits) {
@@ -206,4 +232,10 @@ export function changeCurrentHabit(habit) {
 export function findHabitIndex(target, habitList = state.habits) {
   const nameFound = `${target?.querySelector(".habit-h2").innerHTML}`;
   return habitList.findIndex((e) => e.title === nameFound);
+}
+
+export function findNoteIndex(date) {
+  return state.notes.findIndex((e) => {
+    e.date === date;
+  });
 }

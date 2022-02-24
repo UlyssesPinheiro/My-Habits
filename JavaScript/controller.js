@@ -31,10 +31,7 @@ document.addEventListener("click", (e) => {
     if (view.checkNewHabitFormInput()) {
       if (button.value === "Save Goal") {
         model.editHabitFormInput();
-
-        // O PROBLEMA ESTÁ AQUI
         model.editHabitName(model.state.currentHabit);
-
         view.renderHabits(model.state);
         model.setStorage();
       }
@@ -89,10 +86,29 @@ document.addEventListener("click", (e) => {
     console.log("note-written");
     const note = model.findNote(e.target.closest(".note-written"));
     console.log(note);
+    view.createNoteForm(undefined, note);
   }
   if (e.target.closest(".note-blank")) {
     console.log("note-blank");
-    //create a note form
+    const note = e.target.closest(".note-blank");
+    const date = model.findCurrentDate(note);
+    view.createNoteForm(date);
+  }
+
+  if (e.target.closest(".create-note")) {
+    e.preventDefault();
+    model.getNoteFormInput();
+    model.pushNewNoteToList();
+    view.deleteForm(e.target.closest("form"));
+    view.renderHabits(model.state, model.state.showingArchived);
+    view.renderObjects(model.state, "note", model.state.showingArchived);
+  }
+  if (e.target.closest(".save-note")) {
+    e.preventDefault();
+    model.getNoteFormInput();
+    model.saveNote();
+    view.deleteForm(e.target.closest("form"));
+    view.renderObjects(model.state, "note", model.state.showingArchived);
   }
 
   if (e.target.closest(".info-help-btn")) {

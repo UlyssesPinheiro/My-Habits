@@ -103,6 +103,8 @@ export function createObjects(
     }
 
     if (object === note) {
+      console.log(state.notes);
+
       markup = ``;
       const daysDiv = document.querySelectorAll(".day");
 
@@ -137,13 +139,12 @@ export function createObjects(
 export function renderHabits(state, archived = false) {
   let habitList;
 
-  console.log(habitList);
+  // console.log(habitList);
   if (archived) {
     habitList = state.archivedHabits;
   } else {
     habitList = state.habits;
   }
-  console.log(archived, habitList);
 
   const element = document.querySelector(".habits-div");
 
@@ -197,7 +198,7 @@ export function renderHabits(state, archived = false) {
 export function confirmDeletePopUp(habit) {
   const markup = `
   <form class="goal-box">
-    <p class="add-goal-main-header">Delete habit?</p>
+    <p class="form-main-header">Delete habit?</p>
     <p>"${habit.title}"</p>
     <i class="fas fa-times icon close-window-x"></i>
     <button class="form-button delete-confirm">Confirm deletion</button>
@@ -213,7 +214,7 @@ export function createForm(habit) {
   // newForm  ? "New Goal" : "Edit Goal"
   //
   const markup = ` <form action="submit" class="add-goal-box goal-box">
-    <p class="add-goal-main-header">${habit ? "Edit Goal" : "New Goal"}</p>
+    <p class="form-main-header">${habit ? "Edit Goal" : "New Goal"}</p>
 
     <p class="form-subheader title-name">Title:</p>
     <input
@@ -222,13 +223,13 @@ export function createForm(habit) {
       placeholder="Drink water"
       maxlength="35"
       ${habit ? `value="${habit.title}"` : ""}
-      class="add-goal-item add-goal-title"
+      class="form-item add-goal-title"
       required
     />
     <p class="form-subheader description-name">Description:</p>
     <textarea
       placeholder="Drink 3 cups of water per day"
-      class="add-goal-item add-goal-description"
+      class="form-item add-goal-description"
       maxlength="200">${habit ? `${habit.description}` : ``}</textarea>
 
     <div class="partial-complete">
@@ -260,7 +261,7 @@ export function showAboutPartialGoals() {
   const aboutPartialGoals = `
   <div class="about-partial-goals goal-box">
           <div class="form-title-container">
-            <p class="add-goal-main-header">About partial goals</p>
+            <p class="form-main-header">About partial goals</p>
             <i class="fas fa-times icon icon-h2 go-back"></i>
             </div>
           <p>Let's use an example:</p>
@@ -312,7 +313,7 @@ export function showCredits() {
   const markup = `
   <div class="credits-form form-gap goal-box">
   <div class="form-title-container">
-    <p class="add-goal-main-header">Links</p>
+    <p class="form-main-header">Links</p>
     <i class="fas fa-times icon close-window-x"></i>
   </div>
 
@@ -330,7 +331,7 @@ export function showCredits() {
     >GitHub</a
   >
   </p>
-  <p class="add-goal-main-header">Credits</p>
+  <p class="form-main-header">Credits</p>
   <p class="form-text">
     Original idea from:
     <a target="_blank" href="https://www.youtube.com/watch?v=fSwpe8r50_o"
@@ -444,4 +445,33 @@ export function hideAddNewHabit(showingArchived) {
   if (!showingArchived) {
     document.querySelector(".add-new-habit").style.display = "";
   }
+}
+
+export function createNoteForm(date, note) {
+  const markup = `
+  <form class="note-form goal-box">
+    <div class="form-title-container">
+      <p class="form-main-header">${
+        note ? `Note - ${note.date}` : `Add Note - ${date}`
+      }</p>
+      <i class="fas fa-times icon close-window-x"></i>
+    </div>
+
+    <textarea
+      placeholder="Save something that happened during this day!"
+      class="form-item note-form-description"
+      maxlength="600"
+    >${note ? `${note.text}` : ``}</textarea>
+    <input
+      type="submit"
+      class="${note ? `save` : `create`}-note form-button"
+      value="${note ? `Save` : `Create`} Note"
+    />
+  </form>
+  `;
+
+  gridContainer.insertAdjacentHTML("beforeEnd", markup);
+
+  document.querySelector(".goal-box").style.display = "flex";
+  showBackgroundDiv();
 }

@@ -281,6 +281,10 @@ a:visited:hover {
   display: inline-block;
   opacity: var(--default-opacity);
 }
+.note-form-description {
+  margin: 15px 0;
+  height: 300px;
+}
 
 /*============== Credits ============== */
 .credits-text {
@@ -325,7 +329,7 @@ a:visited:hover {
   font-family: var(--roboto-font-family);
   grid-area: description;
 }
-.add-goal-main-header {
+.form-main-header {
   font-weight: 600;
   height: auto;
 }
@@ -335,11 +339,14 @@ a:visited:hover {
   margin: 15px 0 5px;
 }
 
-.add-goal-item {
+.form-item {
   /* width: 100%; */
   border: var(--default-border);
   border-radius: 5px;
   padding: 5px;
+  font-size: 16px;
+  font-family: var(--roboto-font-family);
+  resize: none;
 }
 
 .partial-complete {
