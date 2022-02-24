@@ -87,6 +87,7 @@ document.addEventListener("click", (e) => {
     console.log("note-written");
     const note = model.findNote(e.target.closest(".note-written"));
     console.log(note);
+    model.state.newNoteFormInput = note;
     view.createNoteForm(undefined, note);
   }
   if (e.target.closest(".note-blank")) {
@@ -108,6 +109,19 @@ document.addEventListener("click", (e) => {
     e.preventDefault();
     model.getNoteFormInput();
     model.saveNote();
+    view.deleteForm(e.target.closest("form"));
+    view.renderObjects(model.state, "note", model.state.showingArchived);
+  }
+
+  if (e.target.closest(".delete-note")) {
+    e.preventDefault();
+    view.deleteForm(e.target.closest("form"));
+    console.log(model.state.newNoteFormInput.text);
+    view.confirmDeleteNote(model.state.newNoteFormInput.text);
+  }
+
+  if (e.target.closest(".confirm-delete-note")) {
+    model.deleteNote();
     view.deleteForm(e.target.closest("form"));
     view.renderObjects(model.state, "note", model.state.showingArchived);
   }

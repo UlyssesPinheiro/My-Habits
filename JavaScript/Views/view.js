@@ -1,6 +1,6 @@
 const circle = `<div class="circle view-icon"></div>
 `;
-const note = `<img class="note note-blank view-icon" src="Icons/noteBlank.svg" alt="notes image" />
+const note = `<img class="note note-blank view-icon" src="Icons/noteBlank.svg"/>
 `;
 const day = `
 <div class="day">
@@ -119,12 +119,12 @@ export function createObjects(
           });
           markup +=
             index !== -1
-              ? `<img class="note note-written view-icon" src="Icons/noteWritten.svg" alt="notes image" />`
-              : `<img class="note note-blank view-icon" src="Icons/noteBlank.svg" alt="notes image" />`;
+              ? `<img class="note note-written view-icon" src="Icons/noteWritten.svg"/>`
+              : `<img class="note note-blank view-icon" src="Icons/noteBlank.svg"/>`;
         } else {
           markup =
             markup +
-            `<img class="note note-blank view-icon" src="Icons/noteBlank.svg" alt="notes image" />`;
+            `<img class="note note-blank view-icon" src="Icons/noteBlank.svg"/>`;
         }
       }
     }
@@ -178,14 +178,6 @@ export function renderHabits(state, archived = false) {
     </div>
     <div class="habit-progress">Habit Progress</div>`;
   });
-  // <img
-  // class="habit-unarchive archive-icon icon"
-  // src="Icons/box-unarchive-solid.svg"
-  // alt=""
-  // />
-  //<i class="fa-solid fa-arrow-up-right-from-square"></i>
-  //<i class="fas fa-pen habit-rename icon icon-h2"></i>
-  //<i class="fa-solid fa-trash-can habit-delete icon icon-h2"></i>
 
   element.innerHTML = `
     <div class="habit-name" style="border-bottom: none">
@@ -464,11 +456,15 @@ export function createNoteForm(date, note) {
       class="form-item note-form-description"
       maxlength="600"
     >${note ? `${note.text}` : ``}</textarea>
+
+    <div class="form-button-container">
+    ${note ? `<button class="form-button delete-note">Delete</button>` : ``}
     <input
       type="submit"
       class="${note ? `save` : `create`}-note form-button"
       value="${note ? `Save` : `Create`} Note"
     />
+    </div>
   </form>
   `;
 
@@ -476,4 +472,23 @@ export function createNoteForm(date, note) {
 
   document.querySelector(".goal-box").style.display = "flex";
   showBackgroundDiv();
+}
+
+export function confirmDeleteNote(note) {
+  console.log(note);
+  console.log(typeof note);
+  const markup = `
+  <form class="goal-box">
+    <p class="form-main-header">Delete this note?</p>
+    <p class="form-text">${`${note}`.slice(0, 100)}${
+    note.length >= 100 ? "..." : ""
+  }</p>
+    <i class="fas fa-times icon close-window-x"></i>
+    <button class="form-button confirm-delete-note">Confirm deletion</button>
+  </form>
+  `;
+  showBackgroundDiv();
+  gridContainer.insertAdjacentHTML("beforeEnd", markup);
+
+  document.querySelector(".goal-box").style.display = "flex";
 }

@@ -141,6 +141,12 @@ export function saveNote() {
   setStorage();
 }
 
+export function deleteNote() {
+  const index = findNoteIndex(state.newNoteFormInput.date);
+  state.notes.splice(index, 1);
+  setStorage();
+}
+
 export function editHabitName(habit) {
   const index = findHabitIndex(habit); //must be object in DOM, not the title
 
