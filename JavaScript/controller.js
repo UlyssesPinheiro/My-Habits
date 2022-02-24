@@ -4,6 +4,7 @@ import * as view from "./Views/view.js";
 const newHabitForm = document.querySelector(".add-goal-box");
 const titleH1 = document.querySelector(".title-h1");
 const habitsDiv = document.querySelector(".habits-div");
+const daysDiv = document.querySelector(".days");
 
 async function init() {
   model.init();
@@ -19,7 +20,7 @@ async function init() {
 init();
 
 document.addEventListener("click", (e) => {
-  console.log(e.target);
+  // console.log(e.target);
   if (e.target.style.display === "none") return;
   let habitForm = document.querySelector(".goal-box");
 
@@ -129,10 +130,9 @@ habitsDiv.addEventListener("click", (e) => {
   let habitForm = document.querySelector(".goal-box");
 
   if (e.target.closest(".circle")) {
-    console.log("circle");
+    console.log(model.state.habits);
     model.editHabit(e.target.closest(".circle"));
     view.renderHabits(model.state, model.state.showingArchived);
-    console.log(model.state.showingArchived);
     view.hideAddNewHabit(model.state.showingArchived);
     return;
   }
@@ -204,4 +204,17 @@ document.querySelector(".credits-link").addEventListener("click", (e) => {
   e.preventDefault();
   view.showCredits();
   view.showBackgroundDiv();
+});
+
+daysDiv.addEventListener("click", (e) => {
+  if (e.target.closest(".nav-days-right")) {
+    model.displayedDays("forward");
+    view.renderObjects(model.state);
+    view.renderHabits(model.state);
+  }
+  if (e.target.closest(".nav-days-left")) {
+    model.displayedDays("backward");
+    view.renderObjects(model.state);
+    view.renderHabits(model.state);
+  }
 });

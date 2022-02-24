@@ -69,6 +69,10 @@ export function createObjects(
 
         markup = markup + `${object}`;
       }
+      markup =
+        `<i class="fa-solid fa-angle-left icon nav-days nav-days-left"></i>` +
+        markup +
+        `<i class="fa-solid fa-angle-right icon nav-days nav-days-right"></i>`;
     }
 
     if (object === circle && habitList[habitProgressIndex]) {
@@ -103,8 +107,6 @@ export function createObjects(
     }
 
     if (object === note) {
-      console.log(state.notes);
-
       markup = ``;
       const daysDiv = document.querySelectorAll(".day");
 
@@ -452,7 +454,7 @@ export function createNoteForm(date, note) {
   <form class="note-form goal-box">
     <div class="form-title-container">
       <p class="form-main-header">${
-        note ? `Note - ${note.date}` : `Add Note - ${date}`
+        note ? `${note.date}` : `Add Note - ${date}`
       }</p>
       <i class="fas fa-times icon close-window-x"></i>
     </div>

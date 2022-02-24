@@ -124,8 +124,10 @@ a:visited:hover {
 .days {
   grid-area: days;
   align-items: center;
-  overflow: clip;
+  /* overflow: clip; */
   display: flex;
+  position: relative;
+  left: -33px;
   z-index: 1;
   gap: 20px;
 }
@@ -227,6 +229,7 @@ a:visited:hover {
   align-items: center;
   gap: 20px;
   border-bottom: 1px solid var(--gray-color5);
+  padding-left: 0px;
 }
 
 .circle {
@@ -268,6 +271,10 @@ a:visited:hover {
   width: 90%;
   margin-bottom: 0.5rem;
   border-bottom: solid 2px var(--main-color4);
+}
+
+.nav-days {
+  margin: 0;
 }
 
 /*============== Notes ============== */
@@ -462,12 +469,16 @@ a:visited:hover {
   }
   .days {
     justify-content: center;
+    position: static;
+    /* left: -20; */
   }
   .habit-name {
     padding-left: 50px;
   }
   .habit-progress {
     justify-content: center;
+    position: relative;
+    padding-left: 16px;
   }
   .header-shaddow {
     grid-column: 1 / 2;
