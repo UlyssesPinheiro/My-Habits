@@ -168,7 +168,15 @@ a:visited:hover {
   align-items: center;
   gap: 20px;
 }
-.note:hover {
+
+/* ============== NOTES ================ */
+
+.note-blank:hover {
+  opacity: 99%;
+  content: url(/Icons/noteBlankAdd.svg);
+}
+
+.note-written:hover {
   opacity: 60%;
 }
 

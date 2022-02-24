@@ -10,6 +10,13 @@ export const state = {
   newHabitFormInput: {},
   habits: [],
   archivedHabits: [],
+  notes: [
+    {
+      noteTitle: "Note Title",
+      text: "this is a note text",
+      date: "Thu Feb 17 2022",
+    },
+  ],
 
   showingArchived: false,
 };
@@ -141,6 +148,21 @@ export function editHabit(e) {
   }
 
   setStorage();
+}
+
+export function getNoteFormInput() {}
+
+export function findNote(e) {
+  const index = Array.from(e.parentNode.children).indexOf(e);
+  const days = document.querySelector(".days");
+  const currentDay = Array.from(days.children)[index];
+
+  const currentTime = currentDay.getAttribute("date");
+
+  //find which Note is the target
+  const noteIndex = state.notes.findIndex((note) => note.date === currentTime);
+
+  return state.notes[noteIndex];
 }
 
 export function setStorage() {

@@ -85,6 +85,15 @@ document.addEventListener("click", (e) => {
     view.renderHabits(model.state, model.state.showingArchived);
     view.deleteForm(e.target.closest("form"));
   }
+  if (e.target.closest(".note-written")) {
+    console.log("note-written");
+    const note = model.findNote(e.target.closest(".note-written"));
+    console.log(note);
+  }
+  if (e.target.closest(".note-blank")) {
+    console.log("note-blank");
+    //create a note form
+  }
 
   if (e.target.closest(".info-help-btn")) {
     e.preventDefault();

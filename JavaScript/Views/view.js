@@ -1,6 +1,6 @@
 const circle = `<div class="circle view-icon"></div>
 `;
-const note = `<img class="note view-icon" src="Icons/noteBlank.svg" alt="notes image" />
+const note = `<img class="note note-blank view-icon" src="Icons/noteBlank.svg" alt="notes image" />
 `;
 const day = `
 <div class="day">
@@ -84,12 +84,14 @@ export function createObjects(
         if (habitList[habitProgressIndex].data.length) {
           // test if the curDate is on the habitList[habitProgressIndex].data
 
-          const x = habitList[habitProgressIndex].data.findIndex((habit) => {
-            if (habit[1]) return habit[0] === curDate; //if habit is set to true
-          });
+          const index = habitList[habitProgressIndex].data.findIndex(
+            (habit) => {
+              if (habit[1]) return habit[0] === curDate; //if habit is set to true
+            }
+          );
 
           markup +=
-            x !== -1
+            index !== -1
               ? `<div class="circle view-icon"><img src="Icons/goal-complete${
                   archived ? "-archived" : ""
                 }.svg" alt="goal complete"></div>`
@@ -101,15 +103,29 @@ export function createObjects(
     }
 
     if (object === note) {
+      markup = ``;
+      const daysDiv = document.querySelectorAll(".day");
+
       for (let i = 0; i < amountOfDays; i++) {
-        markup = markup + `${object}`;
+        if (state.notes[habitProgressIndex]) {
+          const curDate = daysDiv[i].getAttribute("date");
+
+          const index = state.notes.findIndex((note) => {
+            return note.date === curDate;
+          });
+          markup +=
+            index !== -1
+              ? `<img class="note note-written view-icon" src="Icons/noteWritten.svg" alt="notes image" />`
+              : `<img class="note note-blank view-icon" src="Icons/noteBlank.svg" alt="notes image" />`;
+        } else {
+          markup =
+            markup +
+            `<img class="note note-blank view-icon" src="Icons/noteBlank.svg" alt="notes image" />`;
+        }
       }
     }
+
     element.innerHTML = "";
-
-    // if (object === circle) {
-
-    // }
 
     element.innerHTML = `${markup}`;
   });
